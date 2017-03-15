@@ -1,0 +1,10 @@
+<div class="wrapper">
+	<span class="group-btn">
+	<a  ng-show="tipoUsuarioSeleccionado=='administrador' ||
+	 tipoUsuarioSeleccionado=='publicadorExterno' ||
+	 tipoUsuarioSeleccionado=='institucional'" href="" ng-click="login()" class="btn btn-primary btn-md">Ingresá <i class="fa fa-sign-in"></i></a>
+
+	 <a  ng-show="tipoUsuarioSeleccionado=='profesores' ||
+	 tipoUsuarioSeleccionado=='alumnos'" href="" ng-click="loginApiGuarani()" class="btn btn-primary btn-md">Ingresá con Guarani <i class="fa fa-sign-in"></i></a>
+	</span>
+</div>

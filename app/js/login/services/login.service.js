@@ -1,6 +1,6 @@
 'use strict';
 angular.module('myapp.login')
-.factory('LoginService', function(ENV, $http, $q){
+.factory('LoginService', function(ENV, ENV_GUARANI, $http, $q){
 
   var config = {
     headers : {
@@ -49,11 +49,28 @@ angular.module('myapp.login')
     return localStorage.getItem('tokenSeguridad');
   };
 
+  var loginGuarani = function(user, password, tipoUsuario) {
+    var defer = $q.defer();
+    $http.post(ENV_GUARANI.endpoint.url +'/'+tipoUsuario+'/chequearlogin',
+    {
+      "usuario": user,
+      "clave": password  
+     }) 
+    .success(function(data){
+      defer.resolve(data);
+    })
+    .error(defer.reject);
+
+    return defer.promise;
+  };
+
+
 
   return {
     login: login,
     logout: logout,
     getToken: getToken,
-    isLoggedIn: isLoggedIn
+    isLoggedIn: isLoggedIn,
+    loginGuarani : loginGuarani
   };
 })

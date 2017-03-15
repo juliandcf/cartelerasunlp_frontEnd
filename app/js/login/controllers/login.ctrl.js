@@ -1,17 +1,33 @@
 angular.module('myapp.login')
 .controller('LoginCtrl', function($scope, $state, LoginService, ParseTokenService){
 
-
   $scope.loginErrorMessage = '';
   $scope.tiposUsuarios = [
-    {nombre:"Alumno",rest:"alumno"},
-    {nombre:"Docente",rest:"docente"},
+    {nombre:"Alumno",rest:"alumnos"},
+    {nombre:"Docente",rest:"profesores"},
     {nombre:"Administrador",rest:"administrador"},
     {nombre:"Publicador Externo",rest:"publicadorExterno"},
     {nombre:"Institucional",rest:"institucional"}
     ];
-  $scope.tipoUsuarioSeleccionado = null; 
-  
+  $scope.tipoUsuarioSeleccionado = "publicadorExterno"; 
+
+  var colors = {
+    "administrador": "#9f7e7e",
+    "institucional": "#91a58e",
+    "publicadorExterno": "#a7a780",
+    "profesores":"#95809f",
+    "alumnos":"#8cb1b8"
+  };
+
+  $scope.colorLogin = { 
+      background : $scope.$eval($scope.tipoUsuarioSeleccionado, colors)
+  };
+
+  $scope.changeColor = function(){
+      $scope.colorLogin = { 
+        background : $scope.$eval($scope.tipoUsuarioSeleccionado, colors)
+      };
+  }
 
 
 
@@ -31,6 +47,16 @@ angular.module('myapp.login')
        }else{
         $scope.loginErrorMessage = mensaje;
        }   
+    });
+  }
+
+  $scope.loginApiGuarani = function(){
+     LoginService.loginGuarani($scope.username, $scope.password, $scope.tipoUsuarioSeleccionado)
+    .then(function(){
+      console.log('OK,Me fijo si esta registrado');
+    })
+    .catch(function(mensaje){
+      console.log('Hubo un error.');
     });
   }
 });
