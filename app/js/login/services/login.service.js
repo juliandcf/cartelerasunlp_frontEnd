@@ -16,7 +16,6 @@ angular.module('myapp.login')
       "usuario": user,
       "contrasena": password  
      }) 
-    //}, config)
     .success(function(data){
       console.log('El login responde: ');
       console.log(data);
