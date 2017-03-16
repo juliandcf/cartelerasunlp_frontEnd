@@ -24,10 +24,10 @@ angular.module('myapp')
         	}else if (userRol == "publicadorExterno" && !routesForPublicadorExterno.includes(toState.url)){
         		event.preventDefault();
             	$state.go('publicadorExterno');
-        	}else if (userRol == "alumno" && !routesForAlumno.includes(toState.url)){
+        	}else if (userRol == "alumnos" && !routesForAlumno.includes(toState.url)){
         		event.preventDefault();
             	$state.go('alumno');
-        	}else if (userRol == "docente" && !routesForDocente.includes(toState.url)){
+        	}else if (userRol == "profesores" && !routesForDocente.includes(toState.url)){
         		event.preventDefault();
             	$state.go('docente');
         	}

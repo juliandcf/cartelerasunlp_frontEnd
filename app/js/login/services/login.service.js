@@ -65,12 +65,32 @@ angular.module('myapp.login')
   };
 
 
+  var existeUsuario = function(user, tipoUsuario){
+     var defer = $q.defer();
+    $http.post(ENV.endpoint.url + '/usuario/'+tipoUsuario+'/existeUsuario',
+    {
+      "usuario": user
+     }) 
+    .success(function(data){
+      console.log(data);
+      if(data.codigo == 200){
+          localStorage.setItem('tokenSeguridad', data.objeto);
+          defer.resolve(data);
+      }else{
+          defer.reject(data.mensaje);
+      }
+    })
+    .error(defer.reject);
+
+    return defer.promise; 
+  }
 
   return {
     login: login,
     logout: logout,
     getToken: getToken,
     isLoggedIn: isLoggedIn,
-    loginGuarani : loginGuarani
+    loginGuarani : loginGuarani,
+    existeUsuario : existeUsuario
   };
 })

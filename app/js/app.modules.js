@@ -17,4 +17,4 @@ angular.module('myapp', [
 angular.module('myapp.administrador', []);
 angular.module('myapp.publicadorExterno', []);
 angular.module('myapp.institucional', []);
-angular.module('myapp.login', []);
+angular.module('myapp.login', ['ngDialog']);

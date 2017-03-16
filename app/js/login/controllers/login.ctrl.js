@@ -1,5 +1,5 @@
 angular.module('myapp.login')
-.controller('LoginCtrl', function($scope, $state, LoginService, ParseTokenService){
+.controller('LoginCtrl', function($scope, $state, LoginService, ParseTokenService, ngDialog){
 
   $scope.loginErrorMessage = '';
   $scope.tiposUsuarios = [
@@ -9,7 +9,7 @@ angular.module('myapp.login')
     {nombre:"Publicador Externo",rest:"publicadorExterno"},
     {nombre:"Institucional",rest:"institucional"}
     ];
-  $scope.tipoUsuarioSeleccionado = "publicadorExterno"; 
+  $scope.tipoUsuarioSeleccionado = "profesores"; 
 
   var colors = {
     "administrador": "#9f7e7e",
@@ -29,7 +29,9 @@ angular.module('myapp.login')
       };
   }
 
-
+  $scope.prueba = function(){
+    console.log('pero claro que si campeon');
+  }
 
   $scope.login = function(){
 
@@ -52,11 +54,25 @@ angular.module('myapp.login')
 
   $scope.loginApiGuarani = function(){
      LoginService.loginGuarani($scope.username, $scope.password, $scope.tipoUsuarioSeleccionado)
-    .then(function(){
-      console.log('OK,Me fijo si esta registrado');
+    .then(function(data){
+        LoginService.existeUsuario($scope.username, $scope.tipoUsuarioSeleccionado)
+        .then(function(data){
+          var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
+          var tokenParseado = ParseTokenService.parseToken(token);
+          console.log(tokenParseado);
+        })
+        .catch(function(mensaje){
+          console.log("ir a otro estado o levantar modal para completar datos");
+          ngDialog.open({
+           templateUrl: 'js/login/views/modalRegistro.html',
+           className: 'ngdialog-theme-default',
+           scope: $scope 
+            });
+    
+        });
     })
     .catch(function(mensaje){
-      console.log('Hubo un error.');
+      $scope.loginErrorMessage = 'El usuario y contraseña no coinciden';
     });
   }
 });
