@@ -4,8 +4,8 @@ angular.module('myapp')
 	var routesForAdmins = ['/administrador'];
 	var routesForInstitucional = ['/institucional'];
 	var routesForPublicadorExterno = ['/publicadorExterno'];
-	var routesForAlumno = ['/alumno'];
-	var routesForDocente = ['/docente'];
+	var routesForAlumno = ['/alumnos'];
+	var routesForDocente = ['/profesores'];
 
 	console.log('se ejecuta el run');
     $rootScope.$on('$stateChangeStart', function (event, toState) {
@@ -26,10 +26,10 @@ angular.module('myapp')
             	$state.go('publicadorExterno');
         	}else if (userRol == "alumnos" && !routesForAlumno.includes(toState.url)){
         		event.preventDefault();
-            	$state.go('alumno');
+            	$state.go('alumnos');
         	}else if (userRol == "profesores" && !routesForDocente.includes(toState.url)){
         		event.preventDefault();
-            	$state.go('docente');
+            	$state.go('profesores');
         	}
         }
     });

@@ -1,5 +1,5 @@
 angular.module('myapp.login')
-.controller('LoginCtrl', function($scope, $state, LoginService, ParseTokenService, ngDialog){
+.controller('LoginCtrl', function($rootScope, $scope, $state, LoginService, ParseTokenService, RegistroService){
 
   $scope.loginErrorMessage = '';
   $scope.tiposUsuarios = [
@@ -44,17 +44,23 @@ angular.module('myapp.login')
       $state.go(tokenParseado.rol);
     })
     .catch(function(mensaje){
-      if(mensaje == null){
-          $scope.loginErrorMessage = 'Hubo un error del servidor, por favor intente de nuevo mas tarde';
-       }else{
-        $scope.loginErrorMessage = mensaje;
-       }   
+        $rootScope.manejoMensajeError(mensaje);   
     });
   }
+
+  $rootScope.manejoMensajeError = function(mensaje){
+    if(mensaje == null){
+        $scope.loginErrorMessage = 'Hubo un error del servidor, por favor intente de nuevo mas tarde';
+     }else{
+      $scope.loginErrorMessage = mensaje;
+     } 
+  }
+
 
   $scope.loginApiGuarani = function(){
      LoginService.loginGuarani($scope.username, $scope.password, $scope.tipoUsuarioSeleccionado)
     .then(function(data){
+        $scope.usuarioGuarani = data;
         LoginService.existeUsuario($scope.username, $scope.tipoUsuarioSeleccionado)
         .then(function(data){
           var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
@@ -63,16 +69,47 @@ angular.module('myapp.login')
         })
         .catch(function(mensaje){
           console.log("ir a otro estado o levantar modal para completar datos");
-          ngDialog.open({
-           templateUrl: 'js/login/views/modalRegistro.html',
-           className: 'ngdialog-theme-default',
-           scope: $scope 
-            });
-    
+          registrarUsuarioEnCarteleras($scope.tipoUsuarioSeleccionado, $scope.usuarioGuarani);    
         });
     })
     .catch(function(mensaje){
       $scope.loginErrorMessage = 'El usuario y contraseña no coinciden';
     });
+  }
+
+  function registrarUsuarioEnCarteleras(tipoUsuarioSeleccionado, usuarioGuarani){
+      if(tipoUsuarioSeleccionado == "profesores"){
+          RegistroService.registrarDocente(usuarioGuarani)
+          .then(function(data){
+              existeUsuario(usuarioGuarani,$scope.tipoUsuarioSeleccionado,'profesores');
+          })
+          .catch(function(mensaje){
+                $rootScope.manejoMensajeError(mensaje);               
+          })
+
+      }else{
+          RegistroService.registrarAlumno(usuarioGuarani)
+          .then(function(data){
+              existeUsuario(usuarioGuarani,$scope.tipoUsuarioSeleccionado,'alumnos');
+          })
+          .catch(function(mensaje){
+                $rootScope.manejoMensajeError(mensaje);               
+          }) 
+      }    
+
+  }
+
+
+  function existeUsuario(usuario, tipoUsuarioSeleccionado, nombreEstado){
+    //Verifica si existe el docente o alumno en Carteleras y si existe retorna el Token y redirige al estado correspondiente.
+    LoginService.existeUsuario(usuario.usuario, tipoUsuarioSeleccionado)
+    .then(function(data){
+        var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
+        var tokenParseado = ParseTokenService.parseToken(token);
+        console.log("deberia pasarlo al estado "+nombreEstado+", el token: "+tokenParseado);
+        $state.go(nombreEstado);
+    }).catch(function(mensaje){
+        $rootScope.manejoMensajeError(mensaje);
+    })    
   }
 });

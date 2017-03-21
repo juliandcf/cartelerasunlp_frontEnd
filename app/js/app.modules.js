@@ -11,10 +11,15 @@ angular.module('myapp', [
 	'myapp.login',
 	'myapp.publicadorExterno',
 	'myapp.institucional',
+	'myapp.profesores',
+	'myapp.alumnos',
 	'myapp.environment'
 ]);
 
+angular.module('myapp.login', []);
 angular.module('myapp.administrador', []);
 angular.module('myapp.publicadorExterno', []);
 angular.module('myapp.institucional', []);
-angular.module('myapp.login', ['ngDialog']);
+angular.module('myapp.profesores', []);
+angular.module('myapp.alumnos', []);
+

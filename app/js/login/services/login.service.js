@@ -71,8 +71,9 @@ angular.module('myapp.login')
     {
       "usuario": user
      }) 
-    .success(function(data){
+    .success(function(data, status){
       console.log(data);
+      console.log("el estatus"+ status);
       if(data.codigo == 200){
           localStorage.setItem('tokenSeguridad', data.objeto);
           defer.resolve(data);
