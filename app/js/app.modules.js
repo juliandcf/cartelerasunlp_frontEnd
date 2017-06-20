@@ -6,20 +6,14 @@
 */
 angular.module('myapp', [
 	'ui.router',
-	'myapp.administrador',
 	'LocalStorageModule',
 	'myapp.login',
-	'myapp.publicadorExterno',
-	'myapp.institucional',
-	'myapp.profesores',
+	'myapp.publicador',
 	'myapp.alumnos',
 	'myapp.environment'
 ]);
 
 angular.module('myapp.login', []);
-angular.module('myapp.administrador', []);
-angular.module('myapp.publicadorExterno', []);
-angular.module('myapp.institucional', []);
-angular.module('myapp.profesores', []);
+angular.module('myapp.publicador', []);
 angular.module('myapp.alumnos', []);
 

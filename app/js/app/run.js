@@ -1,7 +1,7 @@
 angular.module('myapp')
 .run(function ($rootScope, $state, LoginService, ParseTokenService) {
 
-	var routesForAdmins = ['/administrador'];
+	/*var routesForAdmins = ['/administrador'];
 	var routesForInstitucional = ['/institucional'];
 	var routesForPublicadorExterno = ['/publicadorExterno'];
 	var routesForAlumno = ['/alumnos'];
@@ -32,7 +32,7 @@ angular.module('myapp')
             	$state.go('profesores');
         	}
         }
-    });
+    });*/
 });
 
 // http://arthur.gonigberg.com/2013/06/29/angularjs-role-based-auth/

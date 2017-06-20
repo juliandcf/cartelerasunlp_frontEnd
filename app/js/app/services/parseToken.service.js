@@ -1,5 +1,6 @@
 'use strict';
-angular.module('myapp.login')
+//angular.module('myapp.login')
+angular.module('myapp')
 .factory('ParseTokenService', function(){
 
 

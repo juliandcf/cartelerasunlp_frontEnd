@@ -9,9 +9,9 @@ angular.module('myapp.login')
     }
   };
   
-  var login = function(user, password, tipoUsuario) {
+  var login = function(user, password) {
     var defer = $q.defer();
-    $http.post(ENV.endpoint.url + '/usuario/'+tipoUsuario+'/login',
+    $http.post(ENV.endpoint.url + '/usuario/publicador/login',
     {
       "usuario": user,
       "contrasena": password  
@@ -50,6 +50,7 @@ angular.module('myapp.login')
   };
 
   var loginGuarani = function(user, password, tipoUsuario) {
+    //Se puede mejorar recibiendo solo el usuario.
     var defer = $q.defer();
     $http.post(ENV_GUARANI.endpoint.url +'/'+tipoUsuario+'/chequearlogin',
     {
@@ -67,9 +68,10 @@ angular.module('myapp.login')
 
   var existeUsuario = function(user, tipoUsuario){
      var defer = $q.defer();
+     var $nombreusuario = user.toString();
     $http.post(ENV.endpoint.url + '/usuario/'+tipoUsuario+'/existeUsuario',
     {
-      "usuario": user
+      "usuario": $nombreusuario,
      }) 
     .success(function(data, status){
       console.log(data);

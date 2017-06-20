@@ -1,32 +1,47 @@
 angular.module('myapp.login')
 .controller('LoginCtrl', function($rootScope, $scope, $state, LoginService, ParseTokenService, RegistroService){
-
+      
+  //$scope.usuario.tipoUsuarioSeleccionado = {rest:"profesores"}; 
+  //explicacion http://jimhoskins.com/2012/12/14/nested-scopes-in-angularjs.html
+  $scope.conGuarani = false;
   $scope.loginErrorMessage = '';
   $scope.tiposUsuarios = [
-    {nombre:"Alumno",rest:"alumnos"},
-    {nombre:"Docente",rest:"profesores"},
-    {nombre:"Administrador",rest:"administrador"},
-    {nombre:"Publicador Externo",rest:"publicadorExterno"},
-    {nombre:"Institucional",rest:"institucional"}
-    ];
-  $scope.tipoUsuarioSeleccionado = "profesores"; 
+    {
+      nombre:"Alumno",
+      restApiGuarani:"alumnos",
+      restCarteleras:"alumnos"
+    },
+    {
+      nombre:"Docente",
+      restApiGuarani:"profesores",
+      restCarteleras:"publicador"
+    }
+  ];
+
+  $scope.usuario = {
+    username : null,
+    password : null,
+    tipoUsuarioSeleccionado : null
+
+  }; 
+
+    // ERROR EXPLICACION THIS VS SCOPE
+    // http://stackoverflow.com/questions/11605917/this-vs-scope-in-angularjs-controllers
 
   var colors = {
-    "administrador": "#9f7e7e",
-    "institucional": "#91a58e",
-    "publicadorExterno": "#a7a780",
     "profesores":"#95809f",
     "alumnos":"#8cb1b8"
   };
 
   $scope.colorLogin = { 
-      background : $scope.$eval($scope.tipoUsuarioSeleccionado, colors)
+      background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
   };
 
   $scope.changeColor = function(){
-      $scope.colorLogin = { 
-        background : $scope.$eval($scope.tipoUsuarioSeleccionado, colors)
-      };
+     console.log($scope.usuario.tipoUsuarioSeleccionado.restCarteleras);
+     /* $scope.colorLogin = { 
+        background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
+      };*/
   }
 
   $scope.prueba = function(){
@@ -34,18 +49,25 @@ angular.module('myapp.login')
   }
 
   $scope.login = function(){
-
-    LoginService.login($scope.username, $scope.password, $scope.tipoUsuarioSeleccionado)
-    .then(function(){
-      $scope.loginErrorMessage = ''; //reset error message
-      var token = localStorage.getItem('tokenSeguridad');
-      var tokenParseado = ParseTokenService.parseToken(token);
-      console.log(tokenParseado);
-      $state.go(tokenParseado.rol);
-    })
-    .catch(function(mensaje){
-        $rootScope.manejoMensajeError(mensaje);   
-    });
+    //console.log($scope.conGuarani);
+    if($scope.conGuarani == false){
+      LoginService.login($scope.usuario.username, $scope.usuario.password)
+      .then(function(){
+        $scope.loginErrorMessage = ''; //reset error message
+       
+       //Esto es para mostrarlo, sacarlo dsp 
+        var token = localStorage.getItem('tokenSeguridad');
+        var tokenParseado = ParseTokenService.parseToken(token);
+        console.log(tokenParseado);
+       
+        $state.go('publicador');
+      })
+      .catch(function(mensaje){
+          $rootScope.manejoMensajeError(mensaje);   
+      });
+    }else{
+      $scope.loginApiGuarani();
+    }
   }
 
   $rootScope.manejoMensajeError = function(mensaje){
@@ -58,19 +80,30 @@ angular.module('myapp.login')
 
 
   $scope.loginApiGuarani = function(){
-     LoginService.loginGuarani($scope.username, $scope.password, $scope.tipoUsuarioSeleccionado)
+     console.log(($scope.usuario.tipoUsuarioSeleccionado).restCarteleras);
+     //Se puede mejorar intentando llamar al servicio mandando solo el usuario.
+     LoginService.loginGuarani($scope.usuario.username, $scope.usuario.password, $scope.usuario.tipoUsuarioSeleccionado)
     .then(function(data){
+        nombreTipoUsuario = $scope.usuario.tipoUsuarioSeleccionado.restCarteleras;
+        /*if ($scope.usuario.tipoUsuarioSeleccionado == "profesores"){ 
+          nombreTipoUsuario = "publicador";
+        }else{
+          nombreTipoUsuario = "alumnos";
+        }*/
+
         $scope.usuarioGuarani = data;
-        LoginService.existeUsuario($scope.username, $scope.tipoUsuarioSeleccionado)
+        LoginService.existeUsuario($scope.usuario.username, nombreTipoUsuario)
         .then(function(data){
           var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
           var tokenParseado = ParseTokenService.parseToken(token);
+          $state.go(nombreTipoUsuario);
           console.log(tokenParseado);
         })
         .catch(function(mensaje){
           console.log("ir a otro estado o levantar modal para completar datos");
-          registrarUsuarioEnCarteleras($scope.tipoUsuarioSeleccionado, $scope.usuarioGuarani);    
+          registrarUsuarioEnCarteleras($scope.usuario.tipoUsuarioSeleccionado, $scope.usuarioGuarani);    
         });
+     
     })
     .catch(function(mensaje){
       $scope.loginErrorMessage = 'El usuario y contraseña no coinciden';
@@ -81,28 +114,26 @@ angular.module('myapp.login')
       if(tipoUsuarioSeleccionado == "profesores"){
           RegistroService.registrarDocente(usuarioGuarani)
           .then(function(data){
-              existeUsuario(usuarioGuarani,$scope.tipoUsuarioSeleccionado,'profesores');
+              existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'publicador');
           })
           .catch(function(mensaje){
                 $rootScope.manejoMensajeError(mensaje);               
           })
-
       }else{
           RegistroService.registrarAlumno(usuarioGuarani)
           .then(function(data){
-              existeUsuario(usuarioGuarani,$scope.tipoUsuarioSeleccionado,'alumnos');
+              existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'alumnos');
           })
           .catch(function(mensaje){
                 $rootScope.manejoMensajeError(mensaje);               
           }) 
       }    
-
   }
 
 
   function existeUsuario(usuario, tipoUsuarioSeleccionado, nombreEstado){
     //Verifica si existe el docente o alumno en Carteleras y si existe retorna el Token y redirige al estado correspondiente.
-    LoginService.existeUsuario(usuario.usuario, tipoUsuarioSeleccionado)
+    LoginService.existeUsuario(usuario.usuario, nombreEstado)
     .then(function(data){
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
         var tokenParseado = ParseTokenService.parseToken(token);

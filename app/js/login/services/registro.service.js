@@ -11,13 +11,14 @@ angular.module('myapp.login')
   
   var registrarDocente = function(usuarioGuarani) {
     var defer = $q.defer();
-    $http.post(ENV.endpoint.url + '/usuario/profesores',
+    console.log(usuarioGuarani);
+    $http.post(ENV.endpoint.url + '/usuario/publicador',
      {
       "usuario":usuarioGuarani.usuario,
       "nombre": usuarioGuarani.nombre,
       "apellido": usuarioGuarani.apellido,
-      "anios":usuarioGuarani.anios,
-      "email": usuarioGuarani.email
+      "permisosCarteleras":usuarioGuarani.anios
+      //"email": usuarioGuarani.email
     }) 
     .success(function(data){
       if(data.codigo == 200){
@@ -39,7 +40,7 @@ angular.module('myapp.login')
       "nombre": usuarioGuarani.nombre,
       "apellido": usuarioGuarani.apellido,
       "legajo":usuarioGuarani.legajo,
-      "email": usuarioGuarani.email
+      //"email": usuarioGuarani.email
     }) 
     .success(function(data){
       console.log('El login responde: ');
