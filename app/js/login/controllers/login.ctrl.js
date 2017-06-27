@@ -81,8 +81,8 @@ angular.module('myapp.login')
 
   $scope.loginApiGuarani = function(){
      console.log(($scope.usuario.tipoUsuarioSeleccionado).restCarteleras);
-     //Se puede mejorar intentando llamar al servicio mandando solo el usuario.
-     LoginService.loginGuarani($scope.usuario.username, $scope.usuario.password, $scope.usuario.tipoUsuarioSeleccionado)
+     //Se puede mejorar intentando llamar al servicio mandando solo el usuario. 
+     LoginService.loginGuarani($scope.usuario.username, $scope.usuario.password, $scope.usuario.tipoUsuarioSeleccionado.restApiGuarani)
     .then(function(data){
         nombreTipoUsuario = $scope.usuario.tipoUsuarioSeleccionado.restCarteleras;
         /*if ($scope.usuario.tipoUsuarioSeleccionado == "profesores"){ 

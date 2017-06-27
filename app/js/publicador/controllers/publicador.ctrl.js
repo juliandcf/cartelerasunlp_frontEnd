@@ -1,6 +1,28 @@
 angular.module('myapp.publicador')
 .controller('PublicadorCtrl', function($scope, $state, LoginService, ParseTokenService){
 
+  $scope.menuItems = [
+            { estado: '#', nombre: "Home", activo: true},
+            { estado: '#', nombre: "Carteleras", activo: false },
+            { estado: '#', nombre: "Publicaciones" , activo: false }
+    ];
+
+/*
+
+  $scope.menuItems = [
+            { estado: 'home', nombre: "Home", activo: true},
+            { estado: 'carteleras', nombre: "Carteleras", activo: false },
+            { estado: 'publicaciones', nombre: "Publicaciones" , activo: false }
+    ];
+*/
+	$scope.cambioActivo = function($index) {
+		$scope.menuItems.forEach(function(item) {
+  			item.activo = false;  		
+		});
+		$scope.menuItems[$index].activo = true;
+	};
+    
+
 	$scope.logout = function() {
 		LoginService.logout()
 		.then(function(){
@@ -27,7 +49,5 @@ angular.module('myapp.publicador')
 	 }
 
 
-
-     $scope.isAdmin = $scope.usuario.permisosCartelerasVO.some(function(p) p.nombre == 'ADMINISTRADOR');
-     console.log($scope.isAdmin);
+	 console.log($scope.usuario);
 });
