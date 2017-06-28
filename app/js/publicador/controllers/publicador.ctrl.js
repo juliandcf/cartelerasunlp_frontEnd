@@ -1,12 +1,21 @@
 angular.module('myapp.publicador')
-.controller('PublicadorCtrl', function($scope, $state, LoginService, ParseTokenService){
+.controller('PublicadorCtrl', function($scope, $state, LoginService, RolService, ParseTokenService, MenuService){
+//.controller('PublicadorCtrl', function($scope, $state, LoginService, RolService, ParseTokenService, MenuService){
 
+
+ //$scope.menuItems = MenuService.getMenuItems();
+ /*
   $scope.menuItems = [
             { estado: '#', nombre: "Home", activo: true},
             { estado: '#', nombre: "Carteleras", activo: false },
             { estado: '#', nombre: "Publicaciones" , activo: false }
-    ];
-
+    ];*/
+//  var token = localStorage.getItem('tokenSeguridad');
+//  $scope.usuario = ParseTokenService.parseToken(token);
+  $scope.usuario = ParseTokenService.objetoDelToken();
+  var tipoUsuario = RolService.getRol($scope.usuario);
+  $scope.menuItems = MenuService.getMenuItems(tipoUsuario);
+  console.log(tipoUsuario);
 /*
 
   $scope.menuItems = [
@@ -16,12 +25,15 @@ angular.module('myapp.publicador')
     ];
 */
 	$scope.cambioActivo = function($index) {
+    MenuService.cambioActivo($index,$scope.menuItems);
+    /*
 		$scope.menuItems.forEach(function(item) {
-  			item.activo = false;  		
+  			item.activo = false;
 		});
-		$scope.menuItems[$index].activo = true;
+		$scope.menuItems[$index].activo = true;*/
 	};
-    
+
+
 
 	$scope.logout = function() {
 		LoginService.logout()
@@ -30,10 +42,9 @@ angular.module('myapp.publicador')
 		});
 	};
 
-	
+   /*
 
-	 var token = localStorage.getItem('tokenSeguridad');
-     $scope.usuario = ParseTokenService.parseToken(token);
+
      $scope.tipoUsuario = null;
 
 	 if($scope.usuario.permisosCartelerasVO.some(function(p) p.nombre == 'ADMINISTRADOR')){
@@ -47,7 +58,8 @@ angular.module('myapp.publicador')
 	 }else{
 	 	$scope.usuario.tipoUsuario="DOCENTE";
 	 }
+*/
 
 
-	 console.log($scope.usuario);
+	// console.log($scope.usuario);
 });

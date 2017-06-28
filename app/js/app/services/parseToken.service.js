@@ -1,5 +1,4 @@
 'use strict';
-//angular.module('myapp.login')
 angular.module('myapp')
 .factory('ParseTokenService', function(){
 
@@ -11,8 +10,14 @@ angular.module('myapp')
     return JSON.parse(tokenParseado.content);
   };
 
-
+  var objetoDelToken = function(){
+    //Ya retorna el objeto del token parseado. Ahorra el paso de traerse el token de seguridad del localStorage.
+    var token = localStorage.getItem('tokenSeguridad');
+    var objeto = this.parseToken(token);
+    return objeto;
+  }
   return {
-    parseToken: parseToken
+    parseToken: parseToken,
+    objetoDelToken: objetoDelToken
   };
 })
