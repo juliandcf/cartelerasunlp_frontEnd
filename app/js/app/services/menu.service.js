@@ -1,5 +1,5 @@
 'use strict';
-angular.module('myapp.publicador')
+angular.module('myapp')
 .factory('MenuService', function(){
 
 
@@ -7,8 +7,8 @@ angular.module('myapp.publicador')
       var menu = null;
       if(tipoUsuario == 'ADMINISTRADOR'){
           menu = [
-           { estado: '#', nombre: "Home", activo: true},
-           { estado: '#', nombre: "Carteleras", activo: false },
+           { estado: '#', nombre: "Home ADMINISTRADOR", activo: true},
+           { estado: 'admin.carteleraAdmin', nombre: "Carteleras", activo: false },
            { estado: '#', nombre: "Publicaciones" , activo: false }
           ];
       }else if (tipoUsuario == 'DOCENTE' || tipoUsuario == 'PUBLICADOR EXTERNO' || tipoUsuario == 'INSTITUCIONAL') {

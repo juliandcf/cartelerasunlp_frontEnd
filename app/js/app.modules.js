@@ -10,11 +10,11 @@ angular.module('myapp', [
 	'myapp.login',
 	'myapp.publicador',
 	'myapp.alumnos',
-	'myapp.publicador.admin',
+	'myapp.admin',
 	'myapp.environment'
 ]);
 
 angular.module('myapp.login', []);
 angular.module('myapp.publicador', []);
-angular.module('myapp.publicador.admin', []);
+angular.module('myapp.admin', []);
 angular.module('myapp.alumnos', []);
