@@ -8,9 +8,6 @@ angular.module('myapp.admin')
 				templateUrl: 'js/admin/views/home.html',
 				controller: 'AdminCtrl'
 			}
-		},
-		params:{
-			exito: null
 		}
 	})
 .state('admin.carteleraAdmin', {
@@ -20,6 +17,9 @@ angular.module('myapp.admin')
 				templateUrl: 'js/admin/views/cartelera.html',
 				controller: 'CarteleraAdminCtrl'
 			}
+		},
+		params:{
+			exito: null
 		}
 	})
 	.state('admin.altaCartelera', {

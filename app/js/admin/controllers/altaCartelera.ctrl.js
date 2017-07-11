@@ -1,5 +1,6 @@
 angular.module('myapp.admin')
-.controller('AltaCarteleraCtrl', function($scope, $state, $mdDialog, CarteleraService, PermisosCartelerasService){
+.controller('AltaCarteleraCtrl', function($scope, $state, $stateParams, $mdDialog, CarteleraService, PermisosCartelerasService){
+
 
   PermisosCartelerasService.getPermisos()
   .then(function(data){
@@ -24,7 +25,7 @@ angular.module('myapp.admin')
     agregarPermisosACartelera();
      CarteleraService.agregarCartelera($scope.cartelera)
      .then(function(data){
-       $state.go('admin.carteleraAdmin',  {"exito": "La cartelera se ha creado con exito!"});
+       $state.go('admin.carteleraAdmin',{"exito":'La cartelera se ha creado con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
      }).
      catch(function(error){
          console.log(error);
