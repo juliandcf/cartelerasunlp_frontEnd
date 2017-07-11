@@ -24,12 +24,12 @@ angular.module('myapp.admin')
     agregarPermisosACartelera();
      CarteleraService.agregarCartelera($scope.cartelera)
      .then(function(data){
-         console.log('Sacar cartel de se agrego correctamente');
+       $state.go('admin.carteleraAdmin',  {"exito": "La cartelera se ha creado con exito!"});
      }).
      catch(function(error){
          console.log(error);
      });
-     $state.go('admin.carteleraAdmin');
+
      //Falta recargar, en internet vi algo asi pero no funcionó, me redirigia a 'admin'
      //$state.go('admin.carteleraAdmin', {}, { reload: true });
   }

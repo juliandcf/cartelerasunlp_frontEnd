@@ -7,7 +7,7 @@ angular.module('myapp')
       var menu = null;
       if(tipoUsuario == 'ADMINISTRADOR'){
           menu = [
-           { estado: '#', nombre: "Home", activo: true},
+           { estado: 'admin', nombre: "Home", activo: true},
            { estado: 'admin.carteleraAdmin', nombre: "Carteleras", activo: false },
            { estado: '#', nombre: "Publicaciones" , activo: false }
           ];
