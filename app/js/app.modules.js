@@ -6,6 +6,7 @@
 */
 angular.module('myapp', [
 	'ui.router',
+	'ngMaterial',
 	'LocalStorageModule',
 	'myapp.login',
 	'myapp.publicador',

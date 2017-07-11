@@ -19,5 +19,14 @@ angular.module('myapp.admin')
 			}
 		}
 	})
-
+	.state('admin.altaCartelera', {
+			url:'/cartelera/nueva',
+			views:{
+				'view_admin':{
+					templateUrl: 'js/admin/views/altaCartelera.html',
+					controller: 'AltaCarteleraCtrl'
+				}
+			}
+		});
+	$urlRouterProvider.otherwise('/admin');
 }]);

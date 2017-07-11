@@ -15,6 +15,9 @@
 
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 
+		<!-- AngularJS Material CSS now available via Google CDN; version 1.1.4 used here -->
+	    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+
 	<link rel="stylesheet" href="shared/css/main.css">
 
 	<!-- NgDialog - para levantar modal de inscrpcion docentes
@@ -79,7 +82,10 @@
 	<script type="text/javascript" src="js/publicador/route.js"></script>
 	<script type="text/javascript" src="js/publicador/directive/menu_publicador_directive.js"></script>
 	<script type="text/javascript" src="js/publicador/controllers/publicador.ctrl.js"></script>
+
 	<script type="text/javascript" src="js/app/services/menu.service.js"></script>
+	<script type="text/javascript" src="js/app/services/cartelera.service.js"></script>
+	<script type="text/javascript" src="js/app/services/permisos.service.js"></script>
 
 	<script type="text/javascript" src="js/alumnos/route.js"></script>
 	<script type="text/javascript" src="js/alumnos/controllers/alumnos.ctrl.js"></script>
@@ -91,7 +97,7 @@
 	<script type="text/javascript" src="js/admin/route.js"></script>
 	<script type="text/javascript" src="js/admin/controllers/admin.ctrl.js"></script>
 	<script type="text/javascript" src="js/admin/controllers/carteleraAdmin.ctrl.js"></script>
-
+	<script type="text/javascript" src="js/admin/controllers/altaCartelera.ctrl.js"></script>
 
 	<script type="text/javascript" src="js/login/route.js"></script>
 	<script type="text/javascript" src="js/login/directive/button_login/button_login.directive.js"></script>
@@ -100,6 +106,15 @@
 	<script type="text/javascript" src="js/app/http.token.interceptor.js"></script>
 	<script type="text/javascript" src="js/app/run.js"></script>
 
+
+	<!-- AngularJS Material Dependencies -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.11/angular-aria.min.js"></script>
+
+
+    <!-- AngularJS Material Javascript now available via Google CDN; version 1.1.4 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script>
 
 
 	<!--  directiva que submitea un textarea al hacer click -->

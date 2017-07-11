@@ -7,13 +7,13 @@ angular.module('myapp')
       var menu = null;
       if(tipoUsuario == 'ADMINISTRADOR'){
           menu = [
-           { estado: '#', nombre: "Home ADMINISTRADOR", activo: true},
+           { estado: '#', nombre: "Home", activo: true},
            { estado: 'admin.carteleraAdmin', nombre: "Carteleras", activo: false },
            { estado: '#', nombre: "Publicaciones" , activo: false }
           ];
       }else if (tipoUsuario == 'DOCENTE' || tipoUsuario == 'PUBLICADOR EXTERNO' || tipoUsuario == 'INSTITUCIONAL') {
         menu = [
-         { estado: '#', nombre: "Home publicador", activo: true},
+         { estado: '#', nombre: "Home", activo: true},
          { estado: '#', nombre: "Carteleras", activo: false },
          { estado: '#', nombre: "Publicaciones" , activo: false }
         ];

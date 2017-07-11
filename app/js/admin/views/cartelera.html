@@ -1,1 +1,113 @@
-<h1>CARTELERA ADMIN PROBANDO REDIRECCION </h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <a ui-sref="admin.altaCartelera" class="btn btn-primary">Agregar Cartelera</a>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <table class="table table-bordered table-condensed table-hover table-striped">
+            <thead>
+              <tr>
+                <th class="info">Nombre Cartelera</th>
+                <th colspan="2" class="info">Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="c in carteleras" >
+                <td>{{c.nombre}}</td>
+                <td>
+                  <a href="#">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+                 <!--Como hago para hacer click y que se vaya a editar ese en el cual hice click ¿con ng-click?-->
+
+             </tr>
+
+              <!-- <tr>
+                <td>Primer Año</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Segundo Año</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Tercero Año</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Cuarto Año</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Quinto Año</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Eventos</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Ofrecimientos Laborales</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr>
+              <tr>
+                <td>Informacion General</td>
+                <td>
+                  <a href="editarCartelera.html">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                </td>
+                <td>
+                  <a href="#">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- <b>{{carteleras}}</b> -->
