@@ -7,15 +7,18 @@
 angular.module('myapp', [
 	'ui.router',
 	'ngMaterial',
+	'ngMessages',
 	'LocalStorageModule',
 	'myapp.login',
 	'myapp.publicador',
 	'myapp.alumnos',
 	'myapp.admin',
+	'myapp.admin.cartelera',
 	'myapp.environment'
 ]);
 
 angular.module('myapp.login', []);
 angular.module('myapp.publicador', []);
 angular.module('myapp.admin', []);
+angular.module('myapp.admin.cartelera', []);
 angular.module('myapp.alumnos', []);

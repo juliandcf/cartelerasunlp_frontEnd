@@ -1,8 +1,5 @@
-angular.module('myapp.admin')
+angular.module('myapp.admin.cartelera')
 .controller('CarteleraAdminCtrl', function($scope, $state, $stateParams, CarteleraService, PermisosCartelerasService, $timeout){
-
-  console.log('PARAMETROS');
-  console.log($stateParams);
 
   $scope.mensaje = $stateParams.exito;
 //Se trae todas las carteleras para mostrarlas en el listado y las pone en $scope.carteleras

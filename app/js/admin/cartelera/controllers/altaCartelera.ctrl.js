@@ -1,6 +1,16 @@
-angular.module('myapp.admin')
+angular.module('myapp.admin.cartelera')
 .controller('AltaCarteleraCtrl', function($scope, $state, $stateParams, $mdDialog, CarteleraService, PermisosCartelerasService){
 
+//Para checkbox y boton desabilitado
+  $scope.permisoSeleccionado = false;
+
+  $scope.cambio = function(){
+    var existe = $scope.permisos.some(function(p){
+     return p.seleccionada == true;
+     });
+     $scope.permisoSeleccionado = existe;
+  }
+// Fin Para checkbox y boton desabilitado
 
   PermisosCartelerasService.getPermisos()
   .then(function(data){
@@ -13,7 +23,6 @@ angular.module('myapp.admin')
    function agregarPermisosACartelera(){
      var permisosSeleccionados = [];
      angular.forEach($scope.permisos, function(value, key) {
-        console.log(value.seleccionada);
          if (value.seleccionada == true){
             permisosSeleccionados.push(value.id);
          }
