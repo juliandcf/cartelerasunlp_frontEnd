@@ -30,6 +30,19 @@ angular.module('myapp.admin.cartelera')
     $scope.cartelera.permisosCarteleras = permisosSeleccionados;
    }
 
+   alertExisteCartelera = function(ev) {
+     $mdDialog.show(
+       $mdDialog.alert()
+         .parent(angular.element(document.querySelector('#popupContainer')))
+         .clickOutsideToClose(true)
+         .title('Ya existe una cartelera llamada '.concat($scope.cartelera.nombre))
+         .textContent('Por favor cambia el nombre de la cartelera y vuelve a intentarlo')
+         .ariaLabel('Alert Dialog Demo')
+         .ok('Reintentar')
+         .targetEvent(ev)
+     );
+   };
+
   function agregarCartelera(){
     agregarPermisosACartelera();
      CarteleraService.agregarCartelera($scope.cartelera)
@@ -37,7 +50,10 @@ angular.module('myapp.admin.cartelera')
        $state.go('admin.carteleraAdmin',{"exito":'La cartelera se ha creado con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
      }).
      catch(function(error){
-         console.log(error);
+       console.log(error);
+      if (error.codigo = 409){
+          alertExisteCartelera();
+      }
      });
 
      //Falta recargar, en internet vi algo asi pero no funcionó, me redirigia a 'admin'
@@ -58,6 +74,8 @@ angular.module('myapp.admin.cartelera')
       // $scope.status = 'You decided to keep your debt.';
     });
   };
+
+
 
 
 });

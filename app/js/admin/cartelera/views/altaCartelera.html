@@ -20,6 +20,7 @@
               <div ng-messages="cartelera.nombre.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+                <div ng-if="mensajeError != null">El campo es requerido</div>
               </div>
             </md-input-container>
             <md-input-container class="md-block">

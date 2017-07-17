@@ -26,7 +26,7 @@ angular.module('myapp')
       if(data.codigo == 200){
           defer.resolve(data.objeto);
       }else{
-          defer.reject(data.mensaje);
+          defer.reject(data);
       }
     })
     .error(defer.reject);
