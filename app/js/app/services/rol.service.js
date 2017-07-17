@@ -30,27 +30,6 @@ angular.module('myapp')
       return tipoUsuario;
   }
 
-  /*  var defer = $q.defer();
-    $http.post(ENV.endpoint.url + '/usuario/publicador/login',
-    {
-      "usuario": user,
-      "contrasena": password
-     })
-    .success(function(data){
-      console.log('El login responde: ');
-      console.log(data);
-      if(data.codigo == 200){
-          localStorage.setItem('tokenSeguridad', data.objeto);
-          defer.resolve(data);
-      }else{
-          defer.reject(data.mensaje);
-      }
-    })
-    .error(defer.reject);
-
-    return defer.promise;
-  };*/
-
   return {
     getRol: getRol
   };
