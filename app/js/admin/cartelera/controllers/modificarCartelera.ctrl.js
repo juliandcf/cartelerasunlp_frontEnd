@@ -15,6 +15,17 @@ angular.module('myapp.admin.cartelera')
 
 
 
+  function cargarPermisosYaSeleccionados(){
+      //Marcar como seleccionados los permisos que tiene la cartelera que se va a modificar
+      angular.forEach($scope.permisos, function(value, key) {
+        //NO FUNCIONA ESTO AUN
+          if ($scope.cartelera.permisosCarteleras.includes(value.id)){
+            console.log(value);
+             value.seleccionada = true;
+          }
+        });
+  }
+
   $scope.cambio = function(){
     var existe = $scope.permisos.some(function(p){
      return p.seleccionada == true;
@@ -26,24 +37,16 @@ angular.module('myapp.admin.cartelera')
   PermisosCartelerasService.getPermisos()
   .then(function(data){
       $scope.permisos = data;
+      cargarPermisosYaSeleccionados();
   }).
   catch(function(error){
       console.log(error);
   });
 
 
-  $scope.cargarPermisosYaSeleccionados = function(){
-    //Marcar como seleccionados los permisos que tiene la cartelera que se va a modificar
-    angular.forEach($scope.permisos, function(value, key) {
-      //NO FUNCIONA ESTO AUN
-        if ($scope.cartelera.permisosCarteleras.includes(value.id)){
-           $scope.permisos[key].seleccionada = true;
-        }
-      });
-  }
-console.log($scope.permisos);
+
   //console.log($scope.cartelera.permisosCarteleras);
-  $scope.cargarPermisosYaSeleccionados();
+  //this.cargarPermisosYaSeleccionados();
 
    function agregarPermisosACartelera(){
      var permisosSeleccionados = [];
