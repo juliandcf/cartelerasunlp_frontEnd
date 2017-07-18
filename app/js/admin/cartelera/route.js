@@ -1,6 +1,6 @@
 angular.module('myapp.admin.cartelera')
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-	$stateProvider
+$stateProvider
 .state('admin.carteleraAdmin', {
 		url:'/cartelera',
 		views:{
@@ -21,6 +21,18 @@ angular.module('myapp.admin.cartelera')
 					controller: 'AltaCarteleraCtrl'
 				}
 			}
-		});
+		})
+		.state('admin.modificarCartelera', {
+				url:'/cartelera/modificar',
+				views:{
+					'view_admin':{
+						templateUrl: 'js/admin/cartelera/views/modificarCartelera.html',
+						controller: 'ModificarCarteleraCtrl'
+					}
+				},
+				params:{
+					cartelera: null
+				}
+			});
 	$urlRouterProvider.otherwise('/admin');
 }]);

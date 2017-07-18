@@ -4,6 +4,20 @@ angular.module('myapp')
 .factory('CarteleraService', function(ENV, $http, $q){
 
 
+  var getCartelera = function(idCartelera) {
+    var defer = $q.defer();
+    $http.get(ENV.endpoint.url + '/cartelera/' + idCartelera)
+    .success(function(data){
+      if(data.codigo == 200){
+          defer.resolve(data.objeto);
+      }else{
+          defer.reject(data.mensaje);
+      }
+    })
+    .error(defer.reject);
+    return defer.promise;
+  }
+
   var getCarteleras = function() {
     var defer = $q.defer();
     $http.get(ENV.endpoint.url + '/cartelera')
@@ -48,6 +62,7 @@ angular.module('myapp')
   }
 
   return {
+    getCartelera: getCartelera,
     getCarteleras: getCarteleras,
     agregarCartelera : agregarCartelera,
     eliminarCartelera : eliminarCartelera

@@ -27,7 +27,7 @@
               <tr ng-repeat="c in carteleras" >
                 <td>{{c.nombre}}</td>
                 <td>
-                  <a href="#">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
+                  <a ui-sref="admin.modificarCartelera({cartelera: c})">Editar <i class="fa fa-2x fa-edit fa-fw text-primary"></i></a>
                 </td>
                 <td>
                   <a href=""  ng-click="eliminarCartelera(c.id)">Eliminar <i class="fa fa-2x fa-fw fa-remove text-danger"></i></a>

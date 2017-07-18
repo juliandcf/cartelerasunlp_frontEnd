@@ -1,0 +1,51 @@
+<div class="section" style="background-color:white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Agregar Cartelera&nbsp;</h1>
+        <h4></h4>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section" style="background-color:white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <md-content style="background-color:white">
+          <form name="projectForm">
+            <md-input-container class="md-block">
+              <label>Nombre</label>
+              <input md-maxlength="200" required md-no-asterisk name="nombre" ng-model="cartelera.nombre">
+              <div ng-messages="cartelera.nombre.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Descripcion</label>
+              <input md-maxlength="300" required md-no-asterisk name="descripcion" ng-model="cartelera.descripcion">
+              <div ng-messages="cartelera.nombre.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">La descripcion es demasiado larga</div>
+              </div>
+            </md-input-container>
+            <fieldset class="standard" >
+             <div layout="row" layout-wrap flex>
+                <md-input-container ng-repeat="p in permisos">
+                  <md-checkbox name="permiso" ng-change="cambio()" ng-model="p.seleccionada">{{p.nombre}}</md-checkbox>
+                </md-input-container>
+              </div>
+            </fieldset>
+            <div>
+              <md-button type="submit" ng-disabled="!permisoSeleccionado" ng-click="showConfirm()" class="md-primary md-raised">Modificar Cartelera</md-button>
+            </div>
+            <div class="alert alert-warning" ng-if="!permisoSeleccionado">
+              <strong>Debe seleccionar al menos un permiso</strong>
+            </div>
+          </form>
+        </md-content>
+      </div>
+    </div>
+  </div>
+</div>
