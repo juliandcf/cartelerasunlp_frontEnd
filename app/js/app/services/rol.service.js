@@ -12,11 +12,12 @@ angular.module('myapp')
       //console.log($usuario);
       $usuario.permisosCartelerasVO.some(function(p){
       //  console.log(p.nombre);
+      debugger
         if( p.nombre == 'ADMINISTRADOR'){
           tipoUsuario= "ADMINISTRADOR";
         }
-        else if(p.nombre == 'PUBLICADOR'){
-          tipoUsuario =  "PUBLICADOR";
+        else if(p.nombre == 'PUBLICADOR EXTERNO'){
+          tipoUsuario =  "PUBLICADOR EXTERNO";
         }
         else if(p.nombre == 'INSTITUCIONAL'){
           tipoUsuario =  "INSTITUCIONAL";
