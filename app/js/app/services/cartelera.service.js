@@ -33,8 +33,23 @@ angular.module('myapp')
     return defer.promise;
   }
 
+  var eliminarCartelera = function(id){
+    var defer = $q.defer();
+    $http.delete(ENV.endpoint.url + '/cartelera/' + id)
+    .success(function(data){
+      if(data.codigo == 200){
+          defer.resolve(data.objeto);
+      }else{
+          defer.reject(data);
+      }
+    })
+    .error(defer.reject);
+    return defer.promise;
+  }
+
   return {
     getCarteleras: getCarteleras,
-    agregarCartelera : agregarCartelera
+    agregarCartelera : agregarCartelera,
+    eliminarCartelera : eliminarCartelera
   };
 })
