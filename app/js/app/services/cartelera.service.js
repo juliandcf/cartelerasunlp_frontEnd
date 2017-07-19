@@ -32,8 +32,8 @@ angular.module('myapp')
     .error(defer.reject);
     return defer.promise;
   }
-  
-  
+
+
   var getCartelerasConPermiso = function(idPublicador) {
 	    var defer = $q.defer();
 	    $http.get(ENV.endpoint.url + '/usuario/publicador/'+idPublicador+'/carteleras')
@@ -52,6 +52,21 @@ angular.module('myapp')
   var agregarCartelera = function(cartelera){
     var defer = $q.defer();
     $http.post(ENV.endpoint.url + '/cartelera', cartelera)
+    .success(function(data){
+      if(data.codigo == 200){
+          defer.resolve(data.objeto);
+      }else{
+          defer.reject(data);
+      }
+    })
+    .error(defer.reject);
+    return defer.promise;
+  }
+
+
+  var modificarCartelera = function(cartelera){
+    var defer = $q.defer();
+    $http.put(ENV.endpoint.url + '/cartelera/' + cartelera.id, cartelera)
     .success(function(data){
       if(data.codigo == 200){
           defer.resolve(data.objeto);
@@ -82,6 +97,7 @@ angular.module('myapp')
     getCartelera: getCartelera,
     getCarteleras: getCarteleras,
     agregarCartelera : agregarCartelera,
-    eliminarCartelera : eliminarCartelera
+    eliminarCartelera : eliminarCartelera,
+    modificarCartelera : modificarCartelera
   };
 })

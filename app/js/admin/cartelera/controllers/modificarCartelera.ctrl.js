@@ -3,17 +3,6 @@ angular.module('myapp.admin.cartelera')
 
   $scope.permisoSeleccionado = true;
   $scope.cartelera = $stateParams.cartelera;
-//console.log($stateParams.cartelera);
-  // var permisosDeCartelera = null;
-  // CarteleraService.getCarteleras($stateParams.cartelera.id)
-  //  .then(function(data){
-  //     permisosDeCartelera = data.permisosCarteleras;
-  //  }).
-  //  catch(function(error){
-  //      console.log(error);
-  //  });
-
-
 
   function cargarPermisosYaSeleccionados(){
       //Marcar como seleccionados los permisos que tiene la cartelera que se va a modificar
@@ -71,9 +60,9 @@ angular.module('myapp.admin.cartelera')
      );
    };
 
-  function agregarCartelera(){
+  function modificarCartelera(){
     agregarPermisosACartelera();
-     CarteleraService.agregarCartelera($scope.cartelera)
+     CarteleraService.modificarCartelera($scope.cartelera)
      .then(function(data){
        $state.go('admin.carteleraAdmin',{"exito":'La cartelera se modifico con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
      }).
@@ -85,15 +74,14 @@ angular.module('myapp.admin.cartelera')
      });
   }
 
-  $scope.showConfirm = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.confirm()
+  $scope.showConfirModificar = function(ev) {
+        var confirm = $mdDialog.confirm()
           .title('Desea modificar la cartelera?')
           .ok('Modificar')
           .cancel('Cancelar');
 
     $mdDialog.show(confirm).then(function() {
-      agregarCartelera();
+      modificarCartelera();
     }, function() {
       console.log('Cancela');
       // $scope.status = 'You decided to keep your debt.';
