@@ -1,0 +1,52 @@
+ <div class="container">
+	<div class="row">
+		<div class="col-md-12 text-right">
+			<a ui-sref="admin.altaCartelera" class="btn btn-primary">Agregar
+				Usuario</a>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-12">
+					<div ng-if="mensaje" class="alert alert-success" role="alert">
+            {{mensaje}}
+          </div>
+					<div ng-if="mensaje" class="alert alert-success" role="alert">
+						<strong ng-bind="mensaje"></strong>
+					</div>
+					<table
+						class="table table-bordered table-condensed table-hover table-striped">
+						<thead>
+							<tr>
+								<th class="info">Nombre Usuario</th>
+								<th class="info">Tipo de Usuario</th>
+								<th colspan="2" class="info">Operaciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="usuario in usuarios">
+								<td>{{usuario.nombre}} {{usuario.apellido}}</td>
+								<td>{{usuario.tipoUsuario}} </td>
+								
+								<td><a ui-sref="admin.modificarCartelera({cartelera: c})">Editar
+										<i class="fa fa-2x fa-edit fa-fw text-primary"></i>
+								</a></td>
+								<td><a href="" ng-click="eliminarCartelera(c.id)">Eliminar
+										<i class="fa fa-2x fa-fw fa-remove text-danger"></i>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+

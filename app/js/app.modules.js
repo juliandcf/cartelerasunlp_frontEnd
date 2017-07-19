@@ -14,6 +14,7 @@ angular.module('myapp', [
 	'myapp.alumnos',
 	'myapp.admin',
 	'myapp.admin.cartelera',
+	'myapp.admin.usuario',
 	'myapp.environment'
 ]);
 
@@ -21,4 +22,5 @@ angular.module('myapp.login', []);
 angular.module('myapp.publicador', []);
 angular.module('myapp.admin', []);
 angular.module('myapp.admin.cartelera', []);
+angular.module('myapp.admin.usuario', []);
 angular.module('myapp.alumnos', []);
