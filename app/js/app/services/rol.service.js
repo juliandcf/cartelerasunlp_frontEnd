@@ -12,7 +12,7 @@ angular.module('myapp')
       //console.log($usuario);
       $usuario.permisosCartelerasVO.some(function(p){
       //  console.log(p.nombre);
-      debugger
+    
         if( p.nombre == 'ADMINISTRADOR'){
           tipoUsuario= "ADMINISTRADOR";
         }

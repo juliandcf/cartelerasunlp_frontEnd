@@ -1,5 +1,5 @@
 angular.module('myapp.publicador')
-.controller('PublicadorCtrl', function($scope, $state, LoginService, RolService, ParseTokenService, MenuService){
+.controller('PublicadorCtrl', function($scope, $state, LoginService, RolService, ParseTokenService, MenuService, CarteleraService){
 
   $scope.usuario = ParseTokenService.objetoDelToken();
   $scope.usuario.tipoUsuario = RolService.getRol($scope.usuario);
@@ -20,5 +20,20 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
 			$state.go('login');
 		});
 	};
+	
+  //no tocar nada hasta aca!!!
+	
+	$scope.cargarCarteleras = function(){
+		   CarteleraService.getCartelerasConPermiso($scope.usuario.id)
+		    .then(function(data){
+		        $scope.carteleras = data;
+		        console.log(data);
+		    }).
+		    catch(function(error){
+		        console.log(error);
+		    });
+		  };
+
+		  $scope.cargarCarteleras();
 
 });
