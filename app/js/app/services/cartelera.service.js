@@ -36,7 +36,7 @@ angular.module('myapp')
 
   var getCartelerasConPermiso = function(idPublicador) {
 	    var defer = $q.defer();
-	    $http.get(ENV.endpoint.url + '/usuario/publicador/'+idPublicador+'/carteleras')
+	    $http.get(ENV.endpoint.url + '/cartelera/paraPublicador/'+idPublicador)
 	    .success(function(data){
 	      if(data.codigo == 200){
 	    	  defer.resolve(data.objeto);
