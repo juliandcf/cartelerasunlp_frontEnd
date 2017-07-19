@@ -26,11 +26,27 @@
       <div class="container">
         <div class="row">
           <div ng-repeat="c in carteleras" class="col-md-12">
-           
-              
-            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#primero">{{c.nombre}}</button>
-            <div class="collapse" id="primero">
+
+
+            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
+            <div class="collapse" id="cartelera{{c.id}}">
               <ul class="list-group">
+                <li ng-repeat="p in c.publicacionesDTO" class="list-group-item">
+                  <h3>{{p.titulo}}</h3>
+                  <h5>Fecha publicacion: {{p.fecha}}</h5>
+                  <h5>Autor:
+                    <a href="#">{{p.nombreAutor}}</a>
+                  </h5>
+                  <p>{{p.texto}}</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>
+                      <a class="btn btn-danger btn-sm">Eliminar</a>
+                      <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
+                    </div>
+                  </div>
+                </li>
+                <!--
                 <li class="list-group-item">
                   <h3>Conceptos de Algoritmos, Datos y Programas</h3>
                   <h5>Fecha publicacion: 25/10/2016</h5>
@@ -43,12 +59,12 @@
                   <div class="row">
                     <div class="col-md-12">
                       <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>                      <a class="btn btn-danger btn-sm">Eliminar</a>
-                     
+
                         <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
                     </div>
                   </div>
-                </li>
-                <li class="list-group-item">
+                </li> -->
+                <!-- <li class="list-group-item">
                   <h3>Conceptos de Algoritmos, Datos y Programas</h3>
                   <h5>Fecha publicacion: 26/10/2016</h5>
                   <h5>Autor:
@@ -60,18 +76,18 @@
                   <div class="row">
                     <div class="col-md-12">
                       <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>                      <a class="btn btn-danger btn-sm">Eliminar</a>
-                    
+
                           <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
                     </div>
                   </div>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
         </div>
-       
-        
+
+
       </div>
     </div>
-    
+
     </div>
