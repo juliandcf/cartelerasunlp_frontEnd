@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-md-12">
         <md-content style="background-color:white">
-          <form name="modificarCartelera">
+          <form name="modificarCartelera" ng-submit="showConfirModificar()">
             <md-input-container class="md-block">
               <label>Nombre</label>
               <input md-maxlength="200" required md-no-asterisk name="nombre" ng-model="cartelera.nombre">
@@ -38,7 +38,7 @@
               </div>
             </fieldset>
             <div>
-              <md-button type="submit" ng-disabled="!permisoSeleccionado" ng-click="showConfirModificar()" class="md-primary md-raised">Modificar Cartelera</md-button>
+              <md-button type="submit" ng-disabled="!permisoSeleccionado" class="md-primary md-raised">Modificar Cartelera</md-button>
             </div>
             <div class="alert alert-warning" ng-if="!permisoSeleccionado">
               <strong>Debe seleccionar al menos un permiso</strong>
