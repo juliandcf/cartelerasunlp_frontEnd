@@ -11,5 +11,14 @@ $stateProvider
 		},
 		
 	})
+	.state('admin.altaUsuarioAdmin', {
+			url:'/usuario/nuevo',
+			views:{
+				'view_admin':{
+					templateUrl: 'js/admin/usuario/views/altaUsuario.html',
+					controller: 'AltaUsuarioAdminCtrl'
+				}
+			}
+		})
 	
 }]);

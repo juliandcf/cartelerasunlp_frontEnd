@@ -22,4 +22,27 @@ angular.module('myapp')
   return {
     getPermisos: getPermisos
   };
+  
+  
+  
+  
+  var  getPermisosSinDocente = function() {
+	    var defer = $q.defer();
+	    $http.get(ENV.endpoint.url + '/permisoCarteleraSinDocente')
+	    .success(function(data){
+	      if(data.codigo == 200){
+	          /*Retorno la coleccion de permisos */
+	          defer.resolve(data.objeto);
+	      }else{
+	          defer.reject(data.mensaje);
+	      }
+	    })
+	    .error(defer.reject);
+	    return defer.promise;
+	  }
+
+	  return {
+	    getPermisos: getPermisos
+	  };
+ 
 })
