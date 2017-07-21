@@ -1,0 +1,41 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Modificar publicacion</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div layout="column" ng-cloak>
+          <h3>Cartelera: {{cartelera.nombre}}</h3>
+        <md-content  style="background-color:white" layout-padding>
+            <form name="modificarPublicacion" ng-submit="showConfirmModificar()">
+              <md-input-container class="md-block">
+                <label>Titulo de la publicaion</label>
+                <input md-maxlength="300" required name="titulo" ng-model="publicacion.titulo">
+                <div ng-messages="modificarPublicacion.titulo.$error">
+                  <div ng-message="required">El campo es requerido</div>
+                  <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block">
+                <label>Publicación</label>
+                <textarea ng-model="publicacion.texto" name="texto" required md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                <div ng-messages="modificarPublicacion.texto.$error">
+                  <div ng-message="required">Ingrese el texto de la publicación</div>
+                  <div ng-message="md-maxlength">El texto es demasiado largo</div>
+                </div>
+              </md-input-container>
+              <md-button type="submit" class="md-primary md-raised">Modificar Publicación</md-button>
+            </form>
+      </md-content>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

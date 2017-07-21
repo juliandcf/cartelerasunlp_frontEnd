@@ -14,12 +14,25 @@ angular.module('myapp.publicador')
 		}
 	})
 	.state('publicador.altaPulicacion', {
-		url:'/publicador/publicaciones/alta',
+		url:'/alta',
 		views:{
 			'view_public':{
 				templateUrl: 'js/publicador/publicacion/views/altaPublicacion.html',
 				controller: 'AltaPublicacionCtrl'
 			}
+		}
+	})
+	.state('publicador.modificarPublicacion', {
+		url:'/modificar',
+		views:{
+			'view_public':{
+				templateUrl: 'js/publicador/publicacion/views/modificarPublicacion.html',
+				controller: 'ModificarPublicacionCtrl'
+			}
+		},
+		params:{
+			publicacion: null,
+			cartelera: null
 		}
 	});
 }]);

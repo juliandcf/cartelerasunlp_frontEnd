@@ -18,6 +18,20 @@ angular.module('myapp')
     return defer.promise;
   }
 
+  var modificarPublicacion = function(idCartelera, publicacion){
+    var defer = $q.defer();
+    $http.put(ENV.endpoint.url + '/cartelera/'+idCartelera+'/publicacion/'+publicacion.id, publicacion)
+    .success(function(data){
+      if(data.codigo == 200){
+          defer.resolve(data.objeto);
+      }else{
+          defer.reject(data);
+      }
+    })
+    .error(defer.reject);
+    return defer.promise;
+  }
+
 
   var eliminarPublicacion = function(idCartelera, idPublicacion){
     var defer = $q.defer();
@@ -35,6 +49,7 @@ angular.module('myapp')
 
   return {
     agregarPublicacion : agregarPublicacion,
+    modificarPublicacion : modificarPublicacion,
     eliminarPublicacion : eliminarPublicacion
   };
 })

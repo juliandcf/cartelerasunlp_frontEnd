@@ -2,9 +2,7 @@ angular.module('myapp.publicador')
 .controller('PublicadorCtrl', function($scope, $state, $stateParams, LoginService, RolService, ParseTokenService, MenuService, CarteleraService, PublicacionService, $mdDialog){
 
   $scope.mensaje = $stateParams.exito;
-  console.log ($stateParams.exito);
 
-  console.log($scope.mensaje);
   $scope.usuario = ParseTokenService.objetoDelToken();
   $scope.usuario.tipoUsuario = RolService.getRol($scope.usuario);
   $scope.menuItems = MenuService.getMenuItems($scope.usuario.tipoUsuario);

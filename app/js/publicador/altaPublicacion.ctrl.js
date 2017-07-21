@@ -27,7 +27,9 @@ angular.module('myapp.publicador')
   };
 
   $scope.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
     if ($scope.carteleraDePublicacion != undefined){
+      console.log($scope.publicacion);
         var confirm = $mdDialog.confirm()
               .title('Desea agregar la publicacion?')
               .ok('Agregar')
@@ -37,6 +39,7 @@ angular.module('myapp.publicador')
           agregarPublicacion();
         }, function() {
           console.log('Cancela');
+          // $scope.status = 'You decided to keep your debt.';
         });
     }
   };
