@@ -1,8 +1,8 @@
- <div class="section" style="background-color:white">
+<div class="section" style="background-color:white">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Agregar Usuario&nbsp;</h1>
+        <h1>Editar Usuario&nbsp;</h1>
         <h4></h4>
       </div>
     </div>
@@ -13,7 +13,7 @@
     <div class="row">
       <div class="col-md-12">
           <md-content style="background-color:white">
-            <form name="altaUsuario" ng-submit="showConfirm()" >
+            <form name="altaUsuario" ng-submit="showConfirModificar()" >
               
               <md-input-container class="md-block">
                  <label>Usuario</label>
@@ -71,7 +71,7 @@
               </div>
             </fieldset>
             <div>
-              <md-button type="submit" ng-disabled="!permisoSeleccionado" class="md-primary md-raised">Agregar usuario</md-button>
+              <md-button type="submit" ng-disabled="!permisoSeleccionado" class="md-primary md-raised">Editar usuario</md-button>
             </div>
             <div class="alert alert-warning" ng-if="!permisoSeleccionado">
               <strong>Debe seleccionar al menos un permiso</strong>

@@ -19,7 +19,9 @@ angular.module('myapp.publicador')
     $scope.publicacion.habilitarComentarios = false;
      PublicacionService.agregarPublicacion($scope.carteleraDePublicacion, $scope.publicacion)
      .then(function(data){
+       console.log('antes de state go');	 
        $state.go('publicador',{"exito":'La publicacion se realizo con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
+       console.log('despues state go');
      }).
      catch(function(error){
        console.log(error);

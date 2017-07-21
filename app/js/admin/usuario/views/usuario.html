@@ -13,10 +13,7 @@
 			<div class="col-md-12">
 				<div class="col-md-12">
 					<div ng-if="mensaje" class="alert alert-success" role="alert">
-            {{mensaje}}
-          </div>
-					<div ng-if="mensaje" class="alert alert-success" role="alert">
-						<strong ng-bind="mensaje"></strong>
+						<strong> {{mensaje}}</strong>
 					</div>
 					<table
 						class="table table-bordered table-condensed table-hover table-striped">
@@ -28,14 +25,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="usuario in usuarios">
-								<td>{{usuario.nombre}} {{usuario.apellido}}</td>
-								<td>{{usuario.tipoUsuario}} </td>
+							<tr ng-repeat="u in usuarios">
+								<td>{{u.nombre}} {{u.apellido}}</td>
+								<td>{{u.tipoUsuario}} </td>
 								
-								<td><a ui-sref="admin.modificarCartelera({cartelera: c})">Editar
+								<td><a ui-sref="admin.modificarUsuarioAdmin({usuarioNuevo: u})">Editar
 										<i class="fa fa-2x fa-edit fa-fw text-primary"></i>
 								</a></td>
-								<td><a href="" ng-click="eliminarCartelera(c.id)">Eliminar
+								<td><a href="" ng-click="eliminarUsuario(u.id)">Eliminar
 										<i class="fa fa-2x fa-fw fa-remove text-danger"></i>
 								</a></td>
 							</tr>

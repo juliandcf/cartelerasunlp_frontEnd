@@ -9,7 +9,9 @@ $stateProvider
 				controller: 'ABMUsuarioAdminCtrl'
 			}
 		},
-		
+		params:{
+			exito:null
+		}		
 	})
 	.state('admin.altaUsuarioAdmin', {
 			url:'/usuario/nuevo',
@@ -20,5 +22,18 @@ $stateProvider
 				}
 			}
 		})
+		.state('admin.modificarUsuarioAdmin', {
+			url:'/usuario/modificar',
+			views:{
+				'view_admin':{
+					templateUrl: 'js/admin/usuario/views/modificarUsuarioAdmin.html',
+					controller: 'ModificarUsuarioAdminCtrl'
+				}
+			},
+			params:{
+				usuarioNuevo: null
+			}
+		});
+        $urlRouterProvider.otherwise('/admin');	
 	
 }]);

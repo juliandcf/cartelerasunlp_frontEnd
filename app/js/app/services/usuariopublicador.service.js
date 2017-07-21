@@ -16,9 +16,57 @@ angular.module('myapp')
 			}
 		}).error(defer.reject);
 		return defer.promise;
-	}
+	   }
+		
+		var agregarUsuario = function(usuario){
+		    var defer = $q.defer();
+		    $http.post(ENV.endpoint.url + '/usuario/publicador', usuario)
+		    .success(function(data){
+		      if(data.codigo == 200){
+		          defer.resolve(data.objeto);
+		      }else{
+		          defer.reject(data);
+		      }
+		    })
+		    .error(defer.reject);
+		    return defer.promise;
+		  }
+		
+		var modificarUsuario = function(usuario){
+		    var defer = $q.defer();
+		    $http.put(ENV.endpoint.url + '/usuario/publicador/' + usuario.id, usuario)
+		    .success(function(data){
+		      if(data.codigo == 200){
+		          defer.resolve(data.objeto);
+		      }else{
+		          defer.reject(data);
+		      }
+		    })
+		    .error(defer.reject);
+		    return defer.promise;
+		  }
+		
+		var eliminarUsuario = function(id){
+		    var defer = $q.defer();
+		    $http.delete(ENV.endpoint.url + '/usuario/publicador/' + id)
+		    .success(function(data){
+		      if(data.codigo == 200){
+		          defer.resolve(data.objeto);
+		      }else{
+		          defer.reject(data);
+		      }
+		    })
+		    .error(defer.reject);
+		    return defer.promise;
+		  }
+		
+		
+		
+		
   return {
-	
+	  agregarUsuario: agregarUsuario,
+	  modificarUsuario: modificarUsuario,
+	  eliminarUsuario: eliminarUsuario,
     getUsuarios: getUsuarios,
     
   };

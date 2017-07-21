@@ -1,6 +1,6 @@
 angular.module('myapp.admin.usuario')
-.controller('AltaUsuarioAdminCtrl', function($scope, $state, $stateParams, RolService, ParseTokenService, UsuarioPublicadorService, CarteleraService, PermisosCartelerasService, $mdDialog){
-
+.controller('ModificarUsuarioAdminCtrl', function($scope, $state, $stateParams, RolService, ParseTokenService, UsuarioPublicadorService, CarteleraService, PermisosCartelerasService, $mdDialog){
+	 $scope.usuarioNuevo = $stateParams.usuarioNuevo;
 	
 	PermisosCartelerasService.getPermisosSinDocente()
 	  .then(function(data){
@@ -34,11 +34,11 @@ angular.module('myapp.admin.usuario')
 	
 	
 	
-	 function agregarUsuario(){
+	 function modificarUsuario(){
 		    agregarPermisosAUsuario();
-		    UsuarioPublicadorService.agregarUsuario($scope.usuarioNuevo)
+		    UsuarioPublicadorService.modificarUsuario($scope.usuarioNuevo)
 		     .then(function(data){
-		       $state.go('admin.usuarioAdmin',{"exito":'el usuario se ha creado con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
+		       $state.go('admin.usuarioAdmin',{"exito":'el usuario se ha modificado con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
 		     }).
 		     catch(function(error){
 		       console.log(error);
@@ -64,15 +64,15 @@ angular.module('myapp.admin.usuario')
 		       };	
 		       
 		       
-		       $scope.showConfirm = function(ev) {
+		       $scope.showConfirModificar = function(ev) {
 		    	    // Appending dialog to document.body to cover sidenav in docs app
 		    	    var confirm = $mdDialog.confirm()
-		    	          .title('Desea agregar este usuario?')
-		    	          .ok('Agregar')
+		    	          .title('Desea modificar este usuario?')
+		    	          .ok('Editar')
 		    	          .cancel('Cancelar');
 
 		    	    $mdDialog.show(confirm).then(function() {
-		    	      agregarUsuario();
+		    	      modificarUsuario();
 		    	    }, function() {
 		    	      console.log('Cancela');
 		    	      // $scope.status = 'You decided to keep your debt.';

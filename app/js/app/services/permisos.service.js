@@ -6,7 +6,7 @@ angular.module('myapp')
 
   var getPermisos = function() {
     var defer = $q.defer();
-    $http.get(ENV.endpoint.url + '/permisoCartelera')
+    $http.get(ENV.endpoint.url + '/permisoCartelera/')
     .success(function(data){
       if(data.codigo == 200){
           /*Retorno la coleccion de permisos */
@@ -19,16 +19,27 @@ angular.module('myapp')
     return defer.promise;
   }
 
-  return {
-    getPermisos: getPermisos
-  };
   
+  var getRecuperar = function(id) {
+	    var defer = $q.defer();
+	    $http.get(ENV.endpoint.url + '/permisoCartelera/'+id)
+	    .success(function(data){
+	      if(data.codigo == 200){
+	          /*Retorno el permisos */
+	          defer.resolve(data.objeto);
+	      }else{
+	          defer.reject(data.mensaje);
+	      }
+	    })
+	    .error(defer.reject);
+	    return defer.promise;
+	  }
   
   
   
   var  getPermisosSinDocente = function() {
 	    var defer = $q.defer();
-	    $http.get(ENV.endpoint.url + '/permisoCarteleraSinDocente')
+	    $http.get(ENV.endpoint.url + '/permisoCartelera/sinDocente')
 	    .success(function(data){
 	      if(data.codigo == 200){
 	          /*Retorno la coleccion de permisos */
@@ -42,7 +53,9 @@ angular.module('myapp')
 	  }
 
 	  return {
-	    getPermisos: getPermisos
+		  getPermisosSinDocente: getPermisosSinDocente,
+	    getPermisos: getPermisos,
+	    getRecuperar: getRecuperar
 	  };
  
 })
