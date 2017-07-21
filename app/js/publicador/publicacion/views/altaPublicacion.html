@@ -1,0 +1,53 @@
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Agregar publicacion</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div layout="column" ng-cloak>
+        <md-content  style="background-color:white" layout-padding>
+            <form name="altaPublicacion" ng-submit="showConfirm()">
+              <md-input-container class="md-block">
+                <label>Titulo de la publicaion</label>
+                <input md-maxlength="300" required name="titulo" ng-model="publicacion.titulo">
+                <div ng-messages="altaPublicacion.titulo.$error">
+                  <div ng-message="required">El campo es requerido</div>
+                  <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+                </div>
+              </md-input-container>
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>Cartelera</label>
+                <md-select required name="cartelera" ng-model="carteleraDePublicacion">
+                  <md-option ng-repeat="c in carteleras" value="{{c.id}}">
+                    {{c.nombre}}
+                  </md-option>
+                </md-select>
+                <div ng-messages="altaPublicacion.cartelera.$error">
+                  <div ng-message="required">Seleccione una cartelera</div>
+                </div>
+              </md-input-container>
+
+              <md-input-container class="md-block">
+                <label>Publicación</label>
+                <textarea ng-model="publicacion.texto" name="texto" required md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                <div ng-messages="altaPublicacion.texto.$error">
+                  <div ng-message="required">Ingrese el texto de la publicación</div>
+                  <div ng-message="md-maxlength">El texto es demasiado largo</div>
+                </div>
+              </md-input-container>
+              <md-button type="submit" class="md-primary md-raised">Crear Publicación</md-button>
+
+            </form>
+      </md-content>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

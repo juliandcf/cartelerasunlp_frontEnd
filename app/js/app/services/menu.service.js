@@ -14,7 +14,7 @@ angular.module('myapp')
           ];
       }else if (tipoUsuario == 'DOCENTE' || tipoUsuario == 'PUBLICADOR EXTERNO' || tipoUsuario == 'INSTITUCIONAL') {
         menu = [
-         { estado: '#', nombre: "Home", activo: true},
+         { estado: 'publicador', nombre: "Home", activo: true},
          { estado: '#', nombre: "Carteleras", activo: false },
          { estado: '#', nombre: "Publicaciones" , activo: false }
         ];

@@ -1,6 +1,5 @@
-    <div class="section">
+    <div class="section" >
       <div class="container">
-
       <div menu></div>
       </div>
     </div>
@@ -20,11 +19,21 @@
         </div>
       </div>
     </div>
-       <div ui-view="view_public">
-       {{carteleras}}
+       <div style="background-color:white" ui-view="view_public">
+       <!-- {{carteleras}} -->
+       <div class="container">
+         <div class="row">
+           <div class="col-md-12 text-right">
+             <a ui-sref="publicador.altaPulicacion" class="btn btn-primary">Crear publicación</a>
+           </div>
+         </div>
+       </div>
         <div class="section">
       <div class="container">
         <div class="row">
+          <div ng-if="mensaje" class="alert alert-success" role="alert">
+              <strong ng-bind="mensaje"></strong>
+          </div>
           <div ng-repeat="c in carteleras" class="col-md-12">
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
             <div class="collapse" id="cartelera{{c.id}}">
@@ -39,52 +48,15 @@
                   <div class="row">
                     <div class="col-md-12">
                       <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>
-                      <a class="btn btn-danger btn-sm">Eliminar</a>
-                      <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
+                      <a ng-click="eliminarPublicacion(c.id,p.id)" class="btn btn-danger btn-sm">Eliminar</a>
+                      <!-- <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a> -->
                     </div>
                   </div>
                 </li>
-                <!--
-                <li class="list-group-item">
-                  <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                  <h5>Fecha publicacion: 25/10/2016</h5>
-                  <h5>Autor:
-                    <a href="#">Laura Fava</a>
-                  </h5>
-                  <p>Horarios de recursantes Practicas: martes y viernes de: 8 a 10 hs - 11
-                    a 13hs - 15 a 17 hs -18:30 a 20:30 hs Teorias lunes y miercoles (aula 5):
-                    9 a 10:30hs - 11:30 a 13hs - 15:30 a 17hs - 18:30 a 20hs</p>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>                      <a class="btn btn-danger btn-sm">Eliminar</a>
-
-                        <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
-                    </div>
-                  </div>
-                </li> -->
-                <!-- <li class="list-group-item">
-                  <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                  <h5>Fecha publicacion: 26/10/2016</h5>
-                  <h5>Autor:
-                    <a href="#">Laura Fava</a>
-                  </h5>
-                  <p>Hola chicos paso a comentarles que la Clase del miercoles 27/10/2016 se
-                    realizara en el aula 9 porque en la 5 hay un evento.</p>
-                  <p>Saludos. Laura</p>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <a href="editarPublicacionDocente.html" class="btn btn-sm btn-success">Editar</a>                      <a class="btn btn-danger btn-sm">Eliminar</a>
-
-                          <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a>
-                    </div>
-                  </div>
-                </li> -->
               </ul>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
 
