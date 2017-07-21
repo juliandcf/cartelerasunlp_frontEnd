@@ -6,22 +6,13 @@ angular.module('myapp.publicador')
 
   $scope.usuario = ParseTokenService.objetoDelToken();
   $scope.usuario.tipoUsuario = RolService.getRol($scope.usuario);
-  // $scope.cargarCarteleras = function(){
-  //      CarteleraService.getCartelerasConPermiso($scope.usuario.id)
-  //       .then(function(data){
-  //           $scope.carteleras = data;
-  //       }).
-  //       catch(function(error){
-  //           console.log(error);
-  //       });
-  // };
 
   function modificarPublicacion() {
     $scope.publicacion.idPublicador = $scope.usuario.id;
     $scope.publicacion.habilitarComentarios = false;
      PublicacionService.modificarPublicacion($scope.cartelera.id, $scope.publicacion)
      .then(function(data){
-       $state.go('publicador',{"exito":'La publicacion se modifico con exito!'});//,{"exito":"La cartelera se ha creado con exito!"});
+       $state.go('publicador',{"exito":'La publicacion se modifico con exito!'});
      }).
      catch(function(error){
        console.log(error);
