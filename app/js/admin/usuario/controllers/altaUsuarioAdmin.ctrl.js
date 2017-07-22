@@ -14,7 +14,7 @@ angular.module('myapp.admin.usuario')
 	
 	function agregarPermisosAUsuario(){
 	     var permisosSeleccionados = [];
-	         permisosSeleccionados.push($scope.p.id);
+	         permisosSeleccionados.push($scope.permisoId);
 	         console.log(permisosSeleccionados);
 	    $scope.usuarioNuevo.permisosCarteleras = permisosSeleccionados;
 	    

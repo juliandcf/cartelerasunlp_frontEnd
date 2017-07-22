@@ -58,13 +58,13 @@
              <div layout="row" layout-wrap flex>
              
            
-                 <md-radio-group name="permiso"  ng-model="p.id" ng-change="cambio()">
+                 <md-radio-group name="permiso"  ng-model="permisoId" ng-change="cambio()">
                  
            
                  
                 <md-input-container ng-repeat="p in permisos">
                 
-                  <md-radio-button class="md-primary" value="{{p.id}}" >{{p.nombre}} </md-radio-button>
+                  <md-radio-button class="md-primary" value="{{p.id}}" >{{p.nombre}}  </md-radio-button>
                 
                 </md-input-container>
                  </md-radio-group>

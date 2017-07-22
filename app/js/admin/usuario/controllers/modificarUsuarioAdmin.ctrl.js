@@ -1,7 +1,9 @@
 angular.module('myapp.admin.usuario')
 .controller('ModificarUsuarioAdminCtrl', function($scope, $state, $stateParams, RolService, ParseTokenService, UsuarioPublicadorService, CarteleraService, PermisosCartelerasService, $mdDialog){
 	 $scope.usuarioNuevo = $stateParams.usuarioNuevo;
-	
+	 $scope.permisoId = $scope.usuarioNuevo.permisosCartelerasVO[0].id;
+
+	 
 	PermisosCartelerasService.getPermisosSinDocente()
 	  .then(function(data){
 	      $scope.permisos = data;
@@ -14,7 +16,7 @@ angular.module('myapp.admin.usuario')
 	
 	function agregarPermisosAUsuario(){
 	     var permisosSeleccionados = [];
-	         permisosSeleccionados.push($scope.p.id);
+	         permisosSeleccionados.push($scope.permisoId);
 	         console.log(permisosSeleccionados);
 	    $scope.usuarioNuevo.permisosCarteleras = permisosSeleccionados;
 	    
@@ -22,7 +24,7 @@ angular.module('myapp.admin.usuario')
 	   }
 	
 	//Para checkbox y boton desabilitado
-	  $scope.permisoSeleccionado = false;
+	  $scope.permisoSeleccionado = true;
 	 
 
 	  $scope.cambio = function(){
