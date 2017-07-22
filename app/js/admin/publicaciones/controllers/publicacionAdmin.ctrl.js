@@ -3,7 +3,7 @@ angular.module('myapp.admin.publicacion')
 
 	  $scope.mensaje = $stateParams.exito;
 	$scope.cargarCarteleras = function(){
-		   CarteleraService.getCarteleras()
+		   CarteleraService.getCartelerasConPublicaciones()
 		    .then(function(data){
 		        $scope.carteleras = data;
 		        console.log(data);

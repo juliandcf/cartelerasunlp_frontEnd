@@ -32,6 +32,23 @@ angular.module('myapp')
     .error(defer.reject);
     return defer.promise;
   }
+  
+  var getCartelerasConPublicaciones = function() {
+	    var defer = $q.defer();
+	    $http.get(ENV.endpoint.url + '/cartelera/conPublicaciones')
+	    .success(function(data){
+	      if(data.codigo == 200){
+	          /*Retorno la coleccion de carteleras*/
+	          defer.resolve(data.objeto);
+	      }else{
+	          defer.reject(data.mensaje);
+	      }
+	    })
+	    .error(defer.reject);
+	    return defer.promise;
+	  }
+  
+  
 
 
   var getCartelerasConPermiso = function(idPublicador) {
@@ -95,6 +112,7 @@ angular.module('myapp')
   return {
 	  getCartelerasConPermiso: getCartelerasConPermiso,
     getCartelera: getCartelera,
+    getCartelerasConPublicaciones: getCartelerasConPublicaciones,
     getCarteleras: getCarteleras,
     agregarCartelera : agregarCartelera,
     eliminarCartelera : eliminarCartelera,
