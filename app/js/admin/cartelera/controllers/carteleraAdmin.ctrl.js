@@ -17,7 +17,6 @@ angular.module('myapp.admin.cartelera')
   $scope.cargarCarteleras();
 
   alertBorrarConfirm = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
           .title(' Esta seguro que desea eliminar la cartelera?')
           .textContent('Si existen publicaciones y/o comentarios asociadas a esta cartelera se eliminaran')
@@ -27,6 +26,7 @@ angular.module('myapp.admin.cartelera')
     $mdDialog.show(confirm).then(function() {
         CarteleraService.eliminarCartelera(idCarteleraEliminar).then(function(data){
             $scope.cargarCarteleras();
+            $scope.mensaje = "La cartelera se borro correctamente";
         }).
         catch(function(error){
             console.log(error);

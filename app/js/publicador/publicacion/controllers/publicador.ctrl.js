@@ -48,6 +48,7 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
         $mdDialog.show(confirm).then(function() {
             PublicacionService.eliminarPublicacion(idCarteleraEliminar,idPublicacionEliminar).then(function(data){
                 $scope.cargarCarteleras();
+                $scope.mensaje = "La publicación se borro correctamente";
             }).
             catch(function(error){
                 console.log(error);
