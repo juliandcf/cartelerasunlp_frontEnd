@@ -9,7 +9,7 @@ angular.module('myapp')
           menu = [
            { estado: 'admin', nombre: "Home", activo: true},
            { estado: 'admin.carteleraAdmin', nombre: "Carteleras", activo: false },
-           { estado: '#', nombre: "Publicaciones" , activo: false },
+           { estado: 'admin.publicacion', nombre: "Publicaciones" , activo: false },
            { estado: 'admin.usuarioAdmin', nombre: "Usuarios" , activo: false }
           ];
       }else if (tipoUsuario == 'DOCENTE' || tipoUsuario == 'PUBLICADOR EXTERNO' || tipoUsuario == 'INSTITUCIONAL') {

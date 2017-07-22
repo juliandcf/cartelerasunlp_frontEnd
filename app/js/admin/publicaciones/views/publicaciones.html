@@ -1,0 +1,47 @@
+  
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+          </div>
+        </div>
+      </div>
+    </div>
+       <div style="background-color:white" ui-view="view_public">
+       <!-- {{carteleras}} -->
+       <div class="container">
+         
+       </div>
+        <div class="section">
+      <div class="container">putoooooooooooooooooooooooooooooooooooooo
+        <div class="row">
+          <div ng-if="mensaje" class="alert alert-success" role="alert">
+              <strong ng-bind="mensaje"></strong>
+          </div>
+          <div ng-repeat="c in carteleras" class="col-md-12">
+            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
+            <div class="collapse" id="cartelera{{c.id}}">
+              <ul class="list-group">
+                <li ng-repeat="p in c.publicacionesDTO" class="list-group-item">
+                  <h3>{{p.titulo}}</h3>
+                  <h5>Fecha publicacion: {{p.fecha}}</h5>
+                  <h5>Autor:
+                    <a href="#">{{p.nombreAutor}}</a>
+                  </h5>
+                  <p>{{p.texto}}</p>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <a ui-sref="publicador.modificarPublicacion({publicacion:p , cartelera:c})" class="btn btn-sm btn-success">Editar</a>
+                      <a ng-click="eliminarPublicacion(c.id,p.id)" class="btn btn-danger btn-sm">Eliminar</a>
+                      <!-- <a href="publicacionDocente.html" class="btn btn-info btn-sm">Ver publicacion y Comentarios</a> -->
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
