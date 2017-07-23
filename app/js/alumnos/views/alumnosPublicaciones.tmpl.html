@@ -1,0 +1,27 @@
+<md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>{{cartelera.nombre | uppercase}}</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="shared/img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <div dir-paginate="publicacion in cartelera.publicacionesDTO | filter:q | itemsPerPage: 1" current-page="currentPage" class="card-block">
+      <h4><b>{{publicacion.titulo}}</b></h4>
+      <h5><b>Fecha publicacion:</b> {{publicacion.fecha}}</h5>
+      <h5><b>Autor:</b>
+          <a href="#">{{publicacion.nombreAutor}}</a>
+      </h5>
+      <h5><b>Publicacion</b></h5>
+      <p>{{publicacion.texto}}</p>
+   </div>
+    <md-dialog-actions ng-controller="PaginadoCtrl" layout="row">
+      <div class="text-center">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="js/alumnos/views/dirPagination.tpl.html"></dir-pagination-controls>
+      </div>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

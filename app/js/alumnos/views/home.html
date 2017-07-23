@@ -33,78 +33,67 @@
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="container">
+    <div class="section" style="background-color:white">
+      <div class="container" >
         <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-6">
-                  <div class="panel panel-primary" id="item1">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Primer año</h3>
-                    </div>
-                    <div class="panel-body">
-                      <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                      <h5>Fecha publicacion: 25/10/2016</h5>
-                      <h5>Autor:
-                          <a href="#">Laura Fava</a>
-                      </h5>
-                      <p>Horarios de recursantes Practicas: martes y viernes de: 8 a 10 hs - 11
-                          a 13hs - 15 a 17 hs -18:30 a 20:30 hs Teorias lunes y miercoles (aula 5):
-                          9 a 10:30hs - 11:30 a 13hs - 15:30 a 17hs - 18:30 a 20hs</p>
-                    </div>
-                  </div>
-              </div>
-          <div class="col-md-6">
-                <div class="panel panel-primary" id="item1">
+          <div  class="col-md-6"  >
+              <div ng-repeat="c in carteleras" ng-if="$even" >
+                <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Primer año</h3>
+                    <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
+                    <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                           <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                    <div class="clearfix"></div>
                   </div>
-                  <div class="panel-body">
-                    <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                    <h5>Fecha publicacion: 25/10/2016</h5>
-                    <h5>Autor:
-                        <a href="#">Laura Fava</a>
+                  <div  ng-if="c.publicacionesDTO != undefined" class="panel-body">
+                    <h4><b>{{c.publicacionesDTO[0].titulo}}</b></h4>
+                    <h5><b>Fecha publicacion:</b> {{c.publicacionesDTO[0].fecha}}</h5>
+                    <h5><b>Autor:</b>
+                        <a href="#">{{c.publicacionesDTO[0].nombreAutor}}</a>
                     </h5>
-                    <p>Horarios de recursantes Practicas: martes y viernes de: 8 a 10 hs - 11
-                        a 13hs - 15 a 17 hs -18:30 a 20:30 hs Teorias lunes y miercoles (aula 5):
-                        9 a 10:30hs - 11:30 a 13hs - 15:30 a 17hs - 18:30 a 20hs</p>
+                  <h5><b>Publicacion</b></h5>
+                    <p>{{c.publicacionesDTO[0].texto}}</p>
+                  </div>
+                  <div  ng-if="c.publicacionesDTO == undefined" class="panel-body">
+                    <h5>Aun no hay publicaciones en esta cartelera</h5>
                   </div>
                 </div>
-        </div>
-        <div class="col-md-6">
-              <div class="panel panel-primary" id="item1">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Primer año</h3>
-                </div>
-                <div class="panel-body">
-                  <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                  <h5>Fecha publicacion: 25/10/2016</h5>
-                  <h5>Autor:
-                      <a href="#">Laura Fava</a>
-                  </h5>
-                  <p>Horarios de recursantes Practicas: martes y viernes de: 8 a 10 hs - 11
-                      a 13hs - 15 a 17 hs -18:30 a 20:30 hs Teorias lunes y miercoles (aula 5):
-                      9 a 10:30hs - 11:30 a 13hs - 15:30 a 17hs - 18:30 a 20hs</p>
-                </div>
-              </div>
-      </div>
-      <div class="col-md-6">
-            <div class="panel panel-primary" id="item1">
-              <div class="panel-heading">
-                <h3 class="panel-title">Primer año</h3>
-              </div>
-              <div class="panel-body">
-                <h3>Conceptos de Algoritmos, Datos y Programas</h3>
-                <h5>Fecha publicacion: 25/10/2016</h5>
-                <h5>Autor:
-                    <a href="#">Laura Fava</a>
-                </h5>
-                <p>Horarios de recursantes Practicas: martes y viernes de: 8 a 10 hs - 11
-                    a 13hs - 15 a 17 hs -18:30 a 20:30 hs Teorias lunes y miercoles (aula 5):
-                    9 a 10:30hs - 11:30 a 13hs - 15:30 a 17hs - 18:30 a 20hs</p>
               </div>
             </div>
-    </div>
+          <div class="col-md-6">
+            <div ng-repeat="c in carteleras" ng-if="$odd" >
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
+                  <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                         <span class="glyphicon glyphicon-thumbs-up"></span>
+                  </button>
+                  <div class="clearfix"></div>
+                </div>
+                <div  ng-if="c.publicacionesDTO != undefined" class="panel-body">
+                  <h4><b>{{c.publicacionesDTO[0].titulo}}</b></h4>
+                  <h5><b>Fecha publicacion:</b> {{c.publicacionesDTO[0].fecha}}</h5>
+                  <h5><b>Autor:</b>
+                      <a href="#">{{c.publicacionesDTO[0].nombreAutor}}</a>
+                  </h5>
+                <h5><b>Publicacion</b></h5>
+                  <p>{{c.publicacionesDTO[0].texto}}</p>
+                </div>
+                <div  ng-if="c.publicacionesDTO == undefined" class="panel-body">
+                  <h5>Aun no hay publicaciones en esta cartelera</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--
+                MODAL PARA LEVANTAR
+                https://material.angularjs.org/latest/api/service/$mdDialog
+
+
+                paginado
+                http://plnkr.co/edit/Wtkv71LIqUR4OhzhgpqL?p=preview
+          -->
         </div>
       </div>
     </div>

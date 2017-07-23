@@ -8,6 +8,7 @@ angular.module('myapp', [
 	'ui.router',
 	'ngMaterial',
 	'ngMessages',
+	'angularUtils.directives.dirPagination',
 	'LocalStorageModule',
 	'myapp.login',
 	'myapp.publicador',
