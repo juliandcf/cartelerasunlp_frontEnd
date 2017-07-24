@@ -41,7 +41,12 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
-                    <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                    <button class="btn btn-default pull-right" ng-click="sacarInteres(c.id)" ng-if="c.interesa">
+                        <span class="interesado">Te gusta
+                           <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                    <button class="btn btn-default pull-right" ng-click="registrarInteres(c.id)"  ng-if="!c.interesa" style="color:grey">
+                        <span ng-class="noInteresado">Me gusta
                            <span class="glyphicon glyphicon-thumbs-up"></span>
                     </button>
                     <div class="clearfix"></div>
@@ -66,7 +71,12 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
-                  <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                  <button class="btn btn-default pull-right"  ng-click="sacarInteres(c.id)" ng-if="c.interesa" >
+                      <span class="interesado">Te gusta
+                         <span class="glyphicon glyphicon-thumbs-up"></span>
+                  </button>
+                  <button class="btn btn-default pull-right" ng-click="registrarInteres(c.id)" ng-if="!c.interesa" style="color:grey">
+                      <span ng-class="noInteresado">Me gusta
                          <span class="glyphicon glyphicon-thumbs-up"></span>
                   </button>
                   <div class="clearfix"></div>

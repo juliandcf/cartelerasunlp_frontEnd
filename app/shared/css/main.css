@@ -80,5 +80,18 @@ h4 {
 }
 
 .tituloCartelera {
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: normal;  width: 75%; padding-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+  width: 75%;
+  padding-top: 8px;
+}
+
+.interesado{
+  color:blue
+}
+
+.noInteresado{
+  color:grey
 }
