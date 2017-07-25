@@ -7,6 +7,8 @@
 angular.module('myapp', [
 	'ui.router',
 	'ngMaterial',
+	'summernote',
+	'ngSanitize',
 	'ngMessages',
 	'angularUtils.directives.dirPagination',
 	'LocalStorageModule',

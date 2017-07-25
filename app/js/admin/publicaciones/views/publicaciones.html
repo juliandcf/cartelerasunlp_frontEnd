@@ -20,7 +20,7 @@
                   <h5>Autor:
                     <a href="#">{{p.nombreAutor}}</a>
                   </h5>
-                  <p>{{p.texto}}</p>
+                  <p ng-bind-html="p.texto"></p>
                   <div class="row">
                     <div class="col-md-12">
                       <a ng-click="eliminarPublicacion(c.id,p.id)" class="btn btn-danger btn-sm">Eliminar</a>

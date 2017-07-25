@@ -13,7 +13,7 @@
       <div class="col-md-12">
         <div layout="column" ng-cloak>
         <md-content  style="background-color:white" layout-padding>
-            <form name="altaPublicacion" ng-submit="showConfirm()">
+            <form id="postForm" name="altaPublicacion" ng-submit="showConfirm()" >
               <md-input-container class="md-block">
                 <label>Titulo de la publicaion</label>
                 <input md-maxlength="300" required name="titulo" ng-model="publicacion.titulo">
@@ -36,18 +36,38 @@
 
               <md-input-container class="md-block">
                 <label>Publicación</label>
-                <textarea ng-model="publicacion.texto" name="texto" required md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                <div ng-model="publicacion.texto"></div> 
+                             
+             <!--  <textarea  ng-model="publicacion.texto" name="text"  required md-maxlength="1000" rows="5" md-select-on-focus></textarea> -->
                 <div ng-messages="altaPublicacion.texto.$error">
                   <div ng-message="required">Ingrese el texto de la publicación</div>
                   <div ng-message="md-maxlength">El texto es demasiado largo</div>
                 </div>
               </md-input-container>
+               <summernote height="300" ng-model="publicacion.texto"></summernote>
+             
               <md-button type="submit" class="md-primary md-raised">Crear Publicación</md-button>
 
             </form>
       </md-content>
       </div>
-    </div>
+   <md-input-container class="md-block">    
+   
+
+ 
+
+   </md-input-container>
+
+
+  
+  
+  
+
+
+
+
+
+   
   </div>
 </div>
 </div>

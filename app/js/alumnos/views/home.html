@@ -41,7 +41,12 @@
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
-                    <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                    <button class="btn btn-default pull-right" ng-click="sacarInteres(c.id)" ng-if="c.interesa">
+                        <span class="interesado">Te gusta
+                           <span class="glyphicon glyphicon-thumbs-up"></span>
+                    </button>
+                    <button class="btn btn-default pull-right" ng-click="registrarInteres(c.id)"  ng-if="!c.interesa" style="color:grey">
+                        <span ng-class="noInteresado">Me gusta
                            <span class="glyphicon glyphicon-thumbs-up"></span>
                     </button>
                     <div class="clearfix"></div>
@@ -53,7 +58,8 @@
                         <a href="#">{{c.publicacionesDTO[0].nombreAutor}}</a>
                     </h5>
                   <h5><b>Publicacion</b></h5>
-                    <p>{{c.publicacionesDTO[0].texto}}</p>
+                   <p ng-bind-html="c.publicacionesDTO[0].texto"></p>
+                
                   </div>
                   <div  ng-if="c.publicacionesDTO == undefined" class="panel-body">
                     <h5>Aun no hay publicaciones en esta cartelera</h5>
@@ -66,7 +72,12 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <b class="tituloCartelera" ng-click="showAdvanced($event, c)">{{c.nombre | uppercase}}</b>
-                  <button class="btn btn-default pull-right"  style="color:grey">Me gusta
+                  <button class="btn btn-default pull-right"  ng-click="sacarInteres(c.id)" ng-if="c.interesa" >
+                      <span class="interesado">Te gusta
+                         <span class="glyphicon glyphicon-thumbs-up"></span>
+                  </button>
+                  <button class="btn btn-default pull-right" ng-click="registrarInteres(c.id)" ng-if="!c.interesa" style="color:grey">
+                      <span ng-class="noInteresado">Me gusta
                          <span class="glyphicon glyphicon-thumbs-up"></span>
                   </button>
                   <div class="clearfix"></div>
@@ -78,7 +89,7 @@
                       <a href="#">{{c.publicacionesDTO[0].nombreAutor}}</a>
                   </h5>
                 <h5><b>Publicacion</b></h5>
-                  <p>{{c.publicacionesDTO[0].texto}}</p>
+                   <p ng-bind-html="c.publicacionesDTO[0].texto"></p>
                 </div>
                 <div  ng-if="c.publicacionesDTO == undefined" class="panel-body">
                   <h5>Aun no hay publicaciones en esta cartelera</h5>

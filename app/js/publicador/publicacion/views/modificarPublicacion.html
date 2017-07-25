@@ -25,12 +25,14 @@
               </md-input-container>
               <md-input-container class="md-block">
                 <label>Publicación</label>
-                <textarea ng-model="publicacion.texto" name="texto" required md-maxlength="1000" rows="5" md-select-on-focus></textarea>
-                <div ng-messages="modificarPublicacion.texto.$error">
+               
+<!--                 <textarea ng-model="publicacion.texto" name="texto" required md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+ -->                <div ng-messages="modificarPublicacion.texto.$error">
                   <div ng-message="required">Ingrese el texto de la publicación</div>
                   <div ng-message="md-maxlength">El texto es demasiado largo</div>
                 </div>
               </md-input-container>
+              <summernote height="300" ng-model="publicacion.texto"></summernote>
               <md-button type="submit" class="md-primary md-raised">Modificar Publicación</md-button>
             </form>
       </md-content>

@@ -44,7 +44,9 @@
                   <h5>Autor:
                     <a href="#">{{p.nombreAutor}}</a>
                   </h5>
-                  <p>{{p.texto}}</p>
+                 
+                  <p ng-bind-html="p.texto"></p>
+                 
                   <div class="row">
                     <div class="col-md-12">
                       <a ui-sref="publicador.modificarPublicacion({publicacion:p , cartelera:c})" class="btn btn-sm btn-success">Editar</a>
