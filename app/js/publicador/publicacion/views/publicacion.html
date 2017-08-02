@@ -38,15 +38,25 @@
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
             <div class="collapse" id="cartelera{{c.id}}">
               <ul class="list-group">
+                <li class="list-group-item">
+                  <md-button class="md-primary md-raised" ng-click="showAdvanced($event, c)">
+                       VER INTERESADOS
+                     </md-button>
+                  <!-- <h3>Ver interesados</h3>
+                  <h5>{{c.alumnosDTO}}</h5> -->
+
+
+
+                </li>
                 <li ng-repeat="p in c.publicacionesDTO" class="list-group-item">
                   <h3>{{p.titulo}}</h3>
                   <h5>Fecha publicacion: {{p.fecha}}</h5>
                   <h5>Autor:
                     <a href="#">{{p.nombreAutor}}</a>
                   </h5>
-                 
+
                   <p ng-bind-html="p.texto"></p>
-                 
+
                   <div class="row">
                     <div class="col-md-12">
                       <a ui-sref="publicador.modificarPublicacion({publicacion:p , cartelera:c})" class="btn btn-sm btn-success">Editar</a>

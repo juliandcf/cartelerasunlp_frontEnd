@@ -67,4 +67,32 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
           alertBorrarConfirm();
       }
 
+      function DialogController($scope, $mdDialog, cartelera) {
+
+        $scope.cartelera = cartelera;
+
+        console.log('entro al dialog controller');
+
+      };
+
+      $scope.showAdvanced = function(ev, cartelera) {
+        console.log('entro al show advanced');
+          $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'js/publicador/publicacion/views/alumnosInteresados.tmpl.html',
+           locals: {
+              cartelera: cartelera
+            },
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:true,
+          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+        .then(function(answer) {
+          $scope.status = 'You said the information was "' + answer + '".';
+        }, function() {
+          $scope.status = 'You cancelled the dialog.';
+        });
+      };
+
 });
