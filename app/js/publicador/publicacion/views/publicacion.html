@@ -38,15 +38,10 @@
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
             <div class="collapse" id="cartelera{{c.id}}">
               <ul class="list-group">
-                <li class="list-group-item">
+                <li class="list-group-item text-center">
                   <md-button class="md-primary md-raised" ng-click="showAdvanced($event, c)">
                        VER INTERESADOS
                      </md-button>
-                  <!-- <h3>Ver interesados</h3>
-                  <h5>{{c.alumnosDTO}}</h5> -->
-
-
-
                 </li>
                 <li ng-repeat="p in c.publicacionesDTO" class="list-group-item">
                   <h3>{{p.titulo}}</h3>
