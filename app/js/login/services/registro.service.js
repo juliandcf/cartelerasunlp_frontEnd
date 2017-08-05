@@ -8,7 +8,7 @@ angular.module('myapp.login')
       'Content-Type': 'application/json;charset=utf-8;'
     }
   };
-  
+
   var registrarDocente = function(usuarioGuarani) {
     var defer = $q.defer();
     console.log(usuarioGuarani);
@@ -17,9 +17,9 @@ angular.module('myapp.login')
       "usuario":usuarioGuarani.usuario,
       "nombre": usuarioGuarani.nombre,
       "apellido": usuarioGuarani.apellido,
-      "permisosCarteleras":usuarioGuarani.anios
+      "permisosCartelerasNombres":usuarioGuarani.anios
       //"email": usuarioGuarani.email
-    }) 
+    })
     .success(function(data){
       if(data.codigo == 200){
           defer.resolve(data);
@@ -41,7 +41,7 @@ angular.module('myapp.login')
       "apellido": usuarioGuarani.apellido,
       "legajo":usuarioGuarani.legajo,
       //"email": usuarioGuarani.email
-    }) 
+    })
     .success(function(data){
       console.log('El login responde: ');
       console.log(data);

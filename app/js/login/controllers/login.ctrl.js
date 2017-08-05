@@ -1,7 +1,7 @@
 angular.module('myapp.login')
 .controller('LoginCtrl', function($rootScope, $scope, $state, LoginService, ParseTokenService, RegistroService){
-      
-  //$scope.usuario.tipoUsuarioSeleccionado = {rest:"profesores"}; 
+
+  //$scope.usuario.tipoUsuarioSeleccionado = {rest:"profesores"};
   //explicacion http://jimhoskins.com/2012/12/14/nested-scopes-in-angularjs.html
   $scope.conGuarani = false;
   $scope.loginErrorMessage = '';
@@ -23,7 +23,7 @@ angular.module('myapp.login')
     password : null,
     tipoUsuarioSeleccionado : null
 
-  }; 
+  };
 
     // ERROR EXPLICACION THIS VS SCOPE
     // http://stackoverflow.com/questions/11605917/this-vs-scope-in-angularjs-controllers
@@ -33,13 +33,13 @@ angular.module('myapp.login')
     "alumnos":"#8cb1b8"
   };
 
-  $scope.colorLogin = { 
+  $scope.colorLogin = {
       background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
   };
 
   $scope.changeColor = function(){
      console.log($scope.usuario.tipoUsuarioSeleccionado.restCarteleras);
-     /* $scope.colorLogin = { 
+     /* $scope.colorLogin = {
         background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
       };*/
   }
@@ -54,16 +54,16 @@ angular.module('myapp.login')
       LoginService.login($scope.usuario.username, $scope.usuario.password)
       .then(function(){
         $scope.loginErrorMessage = ''; //reset error message
-       
-       //Esto es para mostrarlo, sacarlo dsp 
+
+       //Esto es para mostrarlo, sacarlo dsp
         var token = localStorage.getItem('tokenSeguridad');
         var tokenParseado = ParseTokenService.parseToken(token);
         console.log(tokenParseado);
-       
+
         $state.go('publicador');
       })
       .catch(function(mensaje){
-          $rootScope.manejoMensajeError(mensaje);   
+          $rootScope.manejoMensajeError(mensaje);
       });
     }else{
       $scope.loginApiGuarani();
@@ -75,17 +75,17 @@ angular.module('myapp.login')
         $scope.loginErrorMessage = 'Hubo un error del servidor, por favor intente de nuevo mas tarde';
      }else{
       $scope.loginErrorMessage = mensaje;
-     } 
+     }
   }
 
 
   $scope.loginApiGuarani = function(){
      console.log(($scope.usuario.tipoUsuarioSeleccionado).restCarteleras);
-     //Se puede mejorar intentando llamar al servicio mandando solo el usuario. 
+     //Se puede mejorar intentando llamar al servicio mandando solo el usuario.
      LoginService.loginGuarani($scope.usuario.username, $scope.usuario.password, $scope.usuario.tipoUsuarioSeleccionado.restApiGuarani)
     .then(function(data){
         nombreTipoUsuario = $scope.usuario.tipoUsuarioSeleccionado.restCarteleras;
-        /*if ($scope.usuario.tipoUsuarioSeleccionado == "profesores"){ 
+        /*if ($scope.usuario.tipoUsuarioSeleccionado == "profesores"){
           nombreTipoUsuario = "publicador";
         }else{
           nombreTipoUsuario = "alumnos";
@@ -96,14 +96,15 @@ angular.module('myapp.login')
         .then(function(data){
           var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
           var tokenParseado = ParseTokenService.parseToken(token);
+          debugger
           $state.go(nombreTipoUsuario);
           console.log(tokenParseado);
         })
         .catch(function(mensaje){
           console.log("ir a otro estado o levantar modal para completar datos");
-          registrarUsuarioEnCarteleras($scope.usuario.tipoUsuarioSeleccionado, $scope.usuarioGuarani);    
+          registrarUsuarioEnCarteleras($scope.usuario.tipoUsuarioSeleccionado, $scope.usuarioGuarani);
         });
-     
+
     })
     .catch(function(mensaje){
       $scope.loginErrorMessage = 'El usuario y contraseña no coinciden';
@@ -111,13 +112,15 @@ angular.module('myapp.login')
   }
 
   function registrarUsuarioEnCarteleras(tipoUsuarioSeleccionado, usuarioGuarani){
-      if(tipoUsuarioSeleccionado == "profesores"){
+      console.log(tipoUsuarioSeleccionado);
+      debugger
+      if(tipoUsuarioSeleccionado.restCarteleras == "publicador"){
           RegistroService.registrarDocente(usuarioGuarani)
           .then(function(data){
               existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'publicador');
           })
           .catch(function(mensaje){
-                $rootScope.manejoMensajeError(mensaje);               
+                $rootScope.manejoMensajeError(mensaje);
           })
       }else{
           RegistroService.registrarAlumno(usuarioGuarani)
@@ -125,9 +128,9 @@ angular.module('myapp.login')
               existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'alumnos');
           })
           .catch(function(mensaje){
-                $rootScope.manejoMensajeError(mensaje);               
-          }) 
-      }    
+                $rootScope.manejoMensajeError(mensaje);
+          })
+      }
   }
 
 
@@ -138,9 +141,10 @@ angular.module('myapp.login')
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
         var tokenParseado = ParseTokenService.parseToken(token);
         console.log("deberia pasarlo al estado "+nombreEstado+", el token: "+tokenParseado);
+        debugger
         $state.go(nombreEstado);
     }).catch(function(mensaje){
         $rootScope.manejoMensajeError(mensaje);
-    })    
+    })
   }
 });

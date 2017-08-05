@@ -8,14 +8,14 @@ angular.module('myapp.login')
       'Content-Type': 'application/json;charset=utf-8;'
     }
   };
-  
+
   var login = function(user, password) {
     var defer = $q.defer();
     $http.post(ENV.endpoint.url + '/usuario/publicador/login',
     {
       "usuario": user,
-      "contrasena": password  
-     }) 
+      "contrasena": password
+     })
     .success(function(data){
       console.log('El login responde: ');
       console.log(data);
@@ -55,8 +55,8 @@ angular.module('myapp.login')
     $http.post(ENV_GUARANI.endpoint.url +'/'+tipoUsuario+'/chequearlogin',
     {
       "usuario": user,
-      "clave": password  
-     }) 
+      "clave": password
+     })
     .success(function(data){
       defer.resolve(data);
     })
@@ -72,7 +72,7 @@ angular.module('myapp.login')
     $http.post(ENV.endpoint.url + '/usuario/'+tipoUsuario+'/existeUsuario',
     {
       "usuario": $nombreusuario,
-     }) 
+     })
     .success(function(data, status){
       console.log(data);
       console.log("el estatus"+ status);
@@ -85,7 +85,7 @@ angular.module('myapp.login')
     })
     .error(defer.reject);
 
-    return defer.promise; 
+    return defer.promise;
   }
 
   return {
