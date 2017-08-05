@@ -21,7 +21,7 @@ angular.module('myapp.login')
   $scope.usuario = {
     username : null,
     password : null,
-    tipoUsuarioSeleccionado : null
+    tipoUsuarioSeleccionado :$scope.tiposUsuarios[0]
 
   };
 
@@ -96,7 +96,7 @@ angular.module('myapp.login')
         .then(function(data){
           var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
           var tokenParseado = ParseTokenService.parseToken(token);
-          debugger
+
           $state.go(nombreTipoUsuario);
           console.log(tokenParseado);
         })
@@ -113,7 +113,7 @@ angular.module('myapp.login')
 
   function registrarUsuarioEnCarteleras(tipoUsuarioSeleccionado, usuarioGuarani){
       console.log(tipoUsuarioSeleccionado);
-      debugger
+
       if(tipoUsuarioSeleccionado.restCarteleras == "publicador"){
           RegistroService.registrarDocente(usuarioGuarani)
           .then(function(data){
@@ -141,7 +141,7 @@ angular.module('myapp.login')
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
         var tokenParseado = ParseTokenService.parseToken(token);
         console.log("deberia pasarlo al estado "+nombreEstado+", el token: "+tokenParseado);
-        debugger
+
         $state.go(nombreEstado);
     }).catch(function(mensaje){
         $rootScope.manejoMensajeError(mensaje);

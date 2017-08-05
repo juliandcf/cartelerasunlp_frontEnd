@@ -1,0 +1,36 @@
+
+<!--Fuentes online para el navegador -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<div class="fluid-container fondoFacultad" style="min-height: 100%">
+  <div class="row fill">
+    <div class="col-md-offset-4 col-md-4" >
+      <div ng-style="colorLogin" class="form-login" >
+        <h4>Loguearse en Cartelera</h4>
+        <div ng-if="loginErrorMessage" class="alert alert-danger" role="alert">
+          <small ng-bind="loginErrorMessage"></small>
+        </div>
+        <input type="text" id="userName" ng-model="usuario.username" class="form-control input-sm chat-input" placeholder="Login de Usuario" />
+        </br>
+       <input type="text" id="userPassword" ng-model="usuario.password" class="form-control input-sm chat-input" placeholder="Contraseña" />
+        </br>
+        <div class="checkbox">
+          <label><input type="checkbox" ng-model="conGuarani" name="">Ingresá con Guaraní</label>
+        </div>
+        <div ng-if="conGuarani">
+          <label for="tipo_usuario">Tipo de Usuario</label>
+           <!--<select id="tipo_usuario" class="form-control" ng-change="changeColor()" ng-model="usuario.tipoUsuarioSeleccionado" >
+              <option ng-repeat="t in tiposUsuarios" value={{t}}>{{t.nombre}}</option>
+            </select>-->
+            <select id="tipo_usuario" class="form-control" ng-change="changeColor()" ng-model="usuario.tipoUsuarioSeleccionado" ng-options="t.nombre for t in tiposUsuarios">
+            </select>
+            <br>
+        </div>
+        <div class="wrapper">
+          <span class="group-btn">
+            <a href="" ng-click="login()" class="btn btn-primary btn-md">Ingresá <i class="fa fa-sign-in"></i></a>
+            </span>
+        </div>
+    </div>
+   </div>
+  </div>
+</div>

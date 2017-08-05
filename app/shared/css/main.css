@@ -64,6 +64,25 @@ body {
     margin-top: 25%;
 }
 
+.textoBienvenida{
+  color:white;
+  margin-top: 10%
+
+}
+
+.form-login-2 {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+    margin-top: 25%;
+    opacity: 0.80;
+}
+
 h4 {
  border:0 solid #fff;
  border-bottom-width:1px;
@@ -77,6 +96,12 @@ h4 {
 
 .wrapper {
     text-align: center;
+}
+
+.fill{
+
+    height:100%;
+    min-height:100%;
 }
 
 .tituloCartelera {
@@ -94,4 +119,14 @@ h4 {
 
 .noInteresado{
   color:grey
+}
+
+.fondoFacultad{
+  background-color: black;
+  background: url("../img/frente2.jpg") no-repeat center center fixed;
+  min-height: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
