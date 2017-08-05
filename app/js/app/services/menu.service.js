@@ -5,6 +5,7 @@ angular.module('myapp')
 
   var getMenuItems = function(tipoUsuario) {
       var menu = null;
+      console.log(tipoUsuario);
       if(tipoUsuario == 'ADMINISTRADOR'){
           menu = [
            { estado: 'admin', nombre: "Home", activo: true},
@@ -14,9 +15,9 @@ angular.module('myapp')
           ];
       }else if (tipoUsuario == 'DOCENTE' || tipoUsuario == 'PUBLICADOR EXTERNO' || tipoUsuario == 'INSTITUCIONAL') {
         menu = [
-         { estado: 'publicador', nombre: "Home", activo: true},
-         { estado: '#', nombre: "Carteleras", activo: false },
-         { estado: '#', nombre: "Publicaciones" , activo: false }
+         { estado: 'publicador', nombre: "Home", activo: true}
+        //  ,{ estado: '#', nombre: "Carteleras", activo: false },
+        //  { estado: '#', nombre: "Publicaciones" , activo: false }
         ];
       }
     return menu;

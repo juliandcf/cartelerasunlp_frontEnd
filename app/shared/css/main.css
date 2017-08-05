@@ -123,10 +123,15 @@ h4 {
 
 .fondoFacultad{
   background-color: black;
-  background: url("../img/frente2.jpg") no-repeat center center fixed;
+  background: url("../img/frente2.jpg") center center fixed;
   min-height: 100%;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-color: black;
+}
+
+.blanco{
+  color:white
 }

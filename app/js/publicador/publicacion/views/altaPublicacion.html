@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Agregar publicacion</h1>
+        <h1 style="color: white">Agregar publicacion</h1>
       </div>
     </div>
   </div>
 </div>
-<div class="section">
+<div class="section fondoFacultad">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -36,8 +36,8 @@
 
               <md-input-container class="md-block">
                 <label>Publicación</label>
-                <div ng-model="publicacion.texto"></div> 
-                             
+                <div ng-model="publicacion.texto"></div>
+
              <!--  <textarea  ng-model="publicacion.texto" name="text"  required md-maxlength="1000" rows="5" md-select-on-focus></textarea> -->
                 <div ng-messages="altaPublicacion.texto.$error">
                   <div ng-message="required">Ingrese el texto de la publicación</div>
@@ -45,29 +45,13 @@
                 </div>
               </md-input-container>
                <summernote height="300" ng-model="publicacion.texto"></summernote>
-             
+
               <md-button type="submit" class="md-primary md-raised">Crear Publicación</md-button>
 
             </form>
       </md-content>
       </div>
-   <md-input-container class="md-block">    
-   
 
- 
-
-   </md-input-container>
-
-
-  
-  
-  
-
-
-
-
-
-   
   </div>
 </div>
 </div>

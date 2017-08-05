@@ -16,7 +16,7 @@
 						<strong> {{mensaje}}</strong>
 					</div>
 					<table
-						class="table table-bordered table-condensed table-hover table-striped">
+						class="table table-bordered table-condensed table-hover table-striped" style="background-color:white">
 						<thead>
 							<tr>
 								<th class="info">Nombre Usuario</th>
@@ -28,7 +28,7 @@
 							<tr ng-repeat="u in usuarios">
 								<td>{{u.nombre}} {{u.apellido}}</td>
 								<td>{{u.tipoUsuario}} </td>
-								
+
 								<td><a ui-sref="admin.modificarUsuarioAdmin({usuarioNuevo: u})">Editar
 										<i class="fa fa-2x fa-edit fa-fw text-primary"></i>
 								</a></td>
@@ -45,5 +45,3 @@
 </div>
 
 </div>
-
-

@@ -1,40 +1,39 @@
- <div class="section" style="background-color:white">
+ <div class="section">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h1>Agregar Usuario&nbsp;</h1>
-        <h4></h4>
+      <div class="col-md-12 blanco">
+        <h1>Agregar Usuario</h1>
       </div>
     </div>
   </div>
 </div>
-<div class="section" style="background-color:white">
+<div class="section">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-          <md-content style="background-color:white">
+          <md-content>
             <form name="altaUsuario" ng-submit="showConfirm()" >
-              
+
               <md-input-container class="md-block">
                  <label>Usuario</label>
                 <input md-maxlength="200" required md-no-asterisk name="usuario" ng-model="usuarioNuevo.usuario">
-              
+
               <div ng-messages="altaUsuario.usuario.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El nombre de usuario es demasiado largo</div>
               </div>
               </md-input-container>
-              
+
               <md-input-container class="md-block">
               <label>Contraseña</label>
                 <input md-maxlength="200" required md-no-asterisk name="contrasena" ng-model="usuarioNuevo.contrasena">
-                
+
                 <div ng-messages="altaUsuario.contrasena.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">la contraseña es muy larga</div>
               </div>
               </md-input-container>
-                
+
                 <md-input-container class="md-block">
                 <label>Nombre</label>
               <input md-maxlength="200" required md-no-asterisk name="nombre" ng-model="usuarioNuevo.nombre">
@@ -43,7 +42,7 @@
                 <div ng-message="md-maxlength">El nombre es demasiado largo</div>
               </div>
               </md-input-container>
-              
+
                <md-input-container class="md-block">
                 <label>Apellido</label>
               <input md-maxlength="200" required md-no-asterisk name="apellido" ng-model="usuarioNuevo.apellido">
@@ -52,20 +51,20 @@
                 <div ng-message="md-maxlength">El apellido es demasiado largo</div>
               </div>
               </md-input-container>
-           
-             
+
+
             <fieldset class="standard" >
              <div layout="row" layout-wrap flex>
-             
-           
+
+
                  <md-radio-group name="permiso"  ng-model="permisoId" ng-change="cambio()">
-                 
-           
-                 
+
+
+
                 <md-input-container ng-repeat="p in permisos">
-                
+
                   <md-radio-button class="md-primary" value="{{p.id}}" >{{p.nombre}} </md-radio-button>
-                
+
                 </md-input-container>
                  </md-radio-group>
               </div>
@@ -76,12 +75,12 @@
             <div class="alert alert-warning" ng-if="!permisoSeleccionado">
               <strong>Debe seleccionar al menos un permiso</strong>
             </div>
-            </form>   
-            
-            
+            </form>
+
+
              </md-content>
           </div>
-         
+
         </div>
       </div>
     </div>
