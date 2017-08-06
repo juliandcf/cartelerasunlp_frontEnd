@@ -135,3 +135,24 @@ h4 {
 .blanco{
   color:white
 }
+
+.colorUniversidad{
+  background-color: #933132;
+  color: white;
+}
+
+
+
+.collapseUniversidad, .collapseUniversidad:focus{
+  background-color: #933132;
+  color: white;
+  margin-top:1px;
+   font-family: 'Raleway',sans-serif;
+   font-size: 20px;
+ font-weight: 800; line-height: 72px; margin: 0 0 10px; text-align: center; text-transform: uppercase;
+ -webkit-box-shadow: 2px 3px 0px rgba(4, 4, 4, 0.3);
+    -moz-box-shadow:    2px 3px 0px rgba(4, 4, 4, 0.3);
+    box-shadow:         2px 3px 0px rgba(4, 4, 4, 0.3);
+}
+
+.collapseUniversidad:hover{background-color: #662122; color:white }

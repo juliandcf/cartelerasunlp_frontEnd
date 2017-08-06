@@ -24,7 +24,7 @@
        <div class="container">
          <div class="row">
            <div class="col-md-12 text-right">
-             <a ui-sref="publicador.altaPulicacion" class="btn btn-primary">Crear publicación</a>
+             <a ui-sref="publicador.altaPulicacion" class="md-primary md-raised md-button md-ink-ripple" style="background-color: #933132">Crear publicación</a>
            </div>
          </div>
        </div>
@@ -35,7 +35,7 @@
               <strong ng-bind="mensaje"></strong>
           </div>
           <div ng-repeat="c in carteleras" class="col-md-12">
-            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
+            <button type="button" class="btn collapseUniversidad btn-block" data-toggle="collapse" data-target="#cartelera{{c.id}}">{{c.nombre}}</button>
             <div class="collapse" id="cartelera{{c.id}}">
               <ul class="list-group">
                 <li class="list-group-item text-center">
