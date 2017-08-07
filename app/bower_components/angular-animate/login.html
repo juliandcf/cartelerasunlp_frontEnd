@@ -1,0 +1,59 @@
+<div class="fluid-container fondoFacultad">
+  <div class="row fill">
+    <div class="text-center textoBienvenida" >
+      <!-- <img src="shared/img/logo.png" width="4%" /> -->
+      <h1>Carteleras virtuales de la Facultad de Informatica - UNLP  </h1>
+      <p class="lead">Bienvenidos! en este sitio podrá encontrar información sobre las cursadas, finales,
+         ofertas laborales y todas las novedades de la facultad de Informatica de la Universidad Nacional de La Plata.</p>
+    </div>
+    <div class="col-md-offset-4 col-md-4" >
+      <div ng-if="loginErrorMessage" class="alert alert-danger" role="alert">
+        <small ng-bind="loginErrorMessage"></small>
+      </div>
+      <md-whiteframe class="md-whiteframe-z1 form-login-2" layout="column" layout-padding>
+          <form name="loginForm" ng-submit="login()" >
+            <md-input-container class="md-block">
+              <label>Usuario</label>
+              <input md-maxlength="200" required md-no-asterisk name="nombre" multiple ng-model="usuario.username">
+              <div ng-messages="loginForm.nombre.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">El usuario es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Password</label>
+              <input md-maxlength="300" required md-no-asterisk name="password" ng-model="usuario.password">
+              <div ng-messages="loginForm.password.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">La contraseña es demasiado larga</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <md-checkbox name="conGuarani" ng-model="conGuarani">
+                Ingresá con Guaraní
+              </md-checkbox>
+          </md-input-container>
+          <fieldset  class="standard" >
+            <div ng-if="conGuarani" layout="row" layout-wrap flex>
+                  <md-radio-group name="permiso"  ng-model="usuario.tipoUsuarioSeleccionado" ng-change="cambio()">
+                  <md-input-container ng-repeat="t in tiposUsuarios">
+                    <md-radio-button class="md-primary" ng-value="t">{{t.nombre}}</md-radio-button>
+                 </md-input-container>
+               </md-radio-group>
+            </div>
+          </fieldset>
+            <fieldset class="standard" >
+             <div layout="row" layout-wrap flex>
+                <!-- <md-input-container ng-repeat="p in permisos">
+                  <md-checkbox name="permiso" ng-change="cambio()" ng-model="p.seleccionada">{{p.nombre}}</md-checkbox>
+                </md-input-container> -->
+              </div>
+            </fieldset>
+            <div>
+              <md-button type="submit" style="background-color: #933132" class="md-primary md-raised">Iniciar sesion</md-button>
+            </div>
+          </form>
+			</md-whiteframe>
+    </div>
+  </div>
+</div>
