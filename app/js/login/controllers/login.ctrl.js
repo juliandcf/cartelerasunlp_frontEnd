@@ -49,7 +49,7 @@ angular.module('myapp.login')
   }
 
   $scope.login = function(){
-    //console.log($scope.conGuarani);
+    $scope.cargando=true;
     if($scope.conGuarani == false){
       LoginService.login($scope.usuario.username, $scope.usuario.password)
       .then(function(){
@@ -59,7 +59,7 @@ angular.module('myapp.login')
         var token = localStorage.getItem('tokenSeguridad');
         var tokenParseado = ParseTokenService.parseToken(token);
         console.log(tokenParseado);
-
+        $scope.cargando=false;
         $state.go('publicador');
       })
       .catch(function(mensaje){
@@ -71,6 +71,7 @@ angular.module('myapp.login')
   }
 
   $rootScope.manejoMensajeError = function(mensaje){
+    $scope.cargando=false;
     if(mensaje == null){
         $scope.loginErrorMessage = 'Hubo un error del servidor, por favor intente de nuevo mas tarde';
      }else{
@@ -80,23 +81,16 @@ angular.module('myapp.login')
 
 
   $scope.loginApiGuarani = function(){
-     console.log(($scope.usuario.tipoUsuarioSeleccionado).restCarteleras);
      //Se puede mejorar intentando llamar al servicio mandando solo el usuario.
      LoginService.loginGuarani($scope.usuario.username, $scope.usuario.password, $scope.usuario.tipoUsuarioSeleccionado.restApiGuarani)
     .then(function(data){
         nombreTipoUsuario = $scope.usuario.tipoUsuarioSeleccionado.restCarteleras;
-        /*if ($scope.usuario.tipoUsuarioSeleccionado == "profesores"){
-          nombreTipoUsuario = "publicador";
-        }else{
-          nombreTipoUsuario = "alumnos";
-        }*/
-
         $scope.usuarioGuarani = data;
         LoginService.existeUsuario($scope.usuario.username, nombreTipoUsuario)
         .then(function(data){
           var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
           var tokenParseado = ParseTokenService.parseToken(token);
-
+          $scope.cargando=false;
           $state.go(nombreTipoUsuario);
           console.log(tokenParseado);
         })
@@ -141,7 +135,7 @@ angular.module('myapp.login')
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
         var tokenParseado = ParseTokenService.parseToken(token);
         console.log("deberia pasarlo al estado "+nombreEstado+", el token: "+tokenParseado);
-
+        $scope.cargando=false;
         $state.go(nombreEstado);
     }).catch(function(mensaje){
         $rootScope.manejoMensajeError(mensaje);

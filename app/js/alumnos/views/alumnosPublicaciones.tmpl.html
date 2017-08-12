@@ -13,7 +13,7 @@
       </div>
     </md-toolbar>
     <div dir-paginate="publicacion in cartelera.publicacionesDTO | filter:q | itemsPerPage: 1" current-page="currentPage" class="card-block">
-     
+
   <blockquote class="pre-scrollable">
       <h4><b>{{publicacion.titulo}}</b></h4>
       <h5><b>Fecha publicacion:</b> {{publicacion.fecha}}</h5>
@@ -22,22 +22,22 @@
       </h5>
       <h5><b>Publicacion</b></h5>
       <p ng-bind-html="publicacion.texto"></p>
-      
-    
-     
+
+
+
    </div>
    </blockquote>
-    
+
     <md-dialog-actions ng-controller="PaginadoCtrl" layout="row">
-        
+
        <div class="container">
-           
+
       <div class="text-center">
         <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="js/alumnos/views/dirPagination.tpl.html"></dir-pagination-controls>
       </div>
-      
+
        </div>
-     
+
     </md-dialog-actions>
   </form>
 </md-dialog>

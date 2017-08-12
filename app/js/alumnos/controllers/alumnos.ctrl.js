@@ -106,6 +106,65 @@ angular.module('myapp.alumnos')
      };
     };
 
+        function ModificarUsuarioController($scope, $mdDialog, usuario, UsuarioAlumnoService) {
+
+          $scope.usuario = usuario;
+
+          $scope.cancel = function() {
+           $mdDialog.cancel();
+         };
+
+         $scope.realizarModificacion = function(){
+           UsuarioAlumnoService.actualizarUsuario($scope.usuario)
+            .then(function(data){
+                $scope.usuarioModificado = "El usuario fue modificado con exito"
+            }).
+            catch(function(error){
+                console.log(error);
+            });
+
+         }
+
+        };
+
+        $scope.realizarModificacion = function(){
+          UsuarioAlumnoService.actualizarUsuario($scope.usuario)
+           .then(function(data){
+               $scope.usuarioModificado = "El usuario fue modificado con exito"
+           }).
+           catch(function(error){
+               console.log(error);
+           });
+
+        }
+
+        $scope.modificarDatos = function(ev) {
+               $mdDialog.show({
+               controller: ModificarUsuarioController,
+               templateUrl: 'js/alumnos/views/modificarUsuario.tmpl.html',
+                locals: {
+                   usuario: $scope.usuario
+                 },
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+             })
+             .then(function(answer) {
+              console.log('You said the information was "' + answer + '".');
+             }, function() {
+              UsuarioAlumnoService.getUsuario($scope.usuario.id)
+               .then(function(data){
+                   $scope.usuario = data;
+               }).
+               catch(function(error){
+                   console.log(error);
+               });
+             });
+
+
+        };
+
 
 
 })

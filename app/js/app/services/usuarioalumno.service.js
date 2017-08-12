@@ -45,9 +45,38 @@ angular.module('myapp')
     return defer.promise;
     }
 
+		var actualizarUsuario = function(usuario) {
+		usuario.cartelerasDeInteres = null;
+    var defer = $q.defer();
+    $http.put(ENV.endpoint.url +'/usuario/alumnos/'+usuario.id, usuario)
+    .success(function(data) {
+      if (data.codigo == 200) {
+        defer.resolve(data.objeto);
+      } else {
+        defer.reject(data.mensaje);
+      }
+    }).error(defer.reject);
+    return defer.promise;
+    }
+
+		var getUsuario = function(id) {
+		var defer = $q.defer();
+		$http.get(ENV.endpoint.url +'/usuario/alumnos/'+id)
+		.success(function(data) {
+			if (data.codigo == 200) {
+				defer.resolve(data.objeto);
+			} else {
+				defer.reject(data.mensaje);
+			}
+		}).error(defer.reject);
+		return defer.promise;
+	  }
+
   return {
     getUsuarioInteresId: getUsuarioInteresId,
     registrarInteres :registrarInteres,
-    sacarInteres : sacarInteres
+    sacarInteres : sacarInteres,
+		actualizarUsuario : actualizarUsuario,
+		getUsuario : getUsuario
   };
 })
