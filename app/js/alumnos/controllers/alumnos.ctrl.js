@@ -152,7 +152,6 @@ angular.module('myapp.alumnos')
              })
              .then(function(answer) {
               console.log('You said the information was "' + answer + '".');
-             }, function() {
               UsuarioAlumnoService.getUsuario($scope.usuario.id)
                .then(function(data){
                    $scope.usuario = data;

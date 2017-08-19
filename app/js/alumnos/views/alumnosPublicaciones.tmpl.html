@@ -13,21 +13,23 @@
       </div>
     </md-toolbar>
     <div dir-paginate="publicacion in cartelera.publicacionesDTO | filter:q | itemsPerPage: 1" current-page="currentPage" class="card-block">
-
   <blockquote class="pre-scrollable">
-      <h4><b>{{publicacion.titulo}}</b></h4>
-      <h5><b>Fecha publicacion:</b> {{publicacion.fecha}}</h5>
-      <h5><b>Autor:</b>
-          <a href="#">{{publicacion.nombreAutor}}</a>
-      </h5>
-      <h5><b>Publicacion</b></h5>
-      <p ng-bind-html="publicacion.texto"></p>
-
-
-
-   </div>
+      <h3 class="text-center "><b>{{publicacion.titulo}}</b></h3>
+      <div class="row">
+        <div class="col-xs-2">
+          <img ng-if="publicacion.fotoPerfil != null" ng-src="{{publicacion.fotoPerfil}}" on-error="shared/img/silueta_alumno.png" class="img-thumbnail" style="width:70px" />
+          <img ng-if="publicacion.fotoPerfil == null" ng-src="shared/img/silueta_alumno.png" class="img-thumbnail" style="width:70px"/>
+        </div>
+        <div class="col-xs-10" style="font-size: 0.8em; padding-top:1%">
+          de <b> {{publicacion.nombreAutor}} </b> - {{publicacion.fecha}}
+        </div>
+      </div>
+        <div class="col-xs-12">
+          <br>
+            <p ng-bind-html="publicacion.texto"></p>
+        </div>
    </blockquote>
-
+ </div>
     <md-dialog-actions ng-controller="PaginadoCtrl" layout="row">
 
        <div class="container">

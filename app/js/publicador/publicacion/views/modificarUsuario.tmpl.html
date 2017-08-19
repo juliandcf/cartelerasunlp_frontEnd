@@ -1,0 +1,129 @@
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Modificar usuario</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon md-svg-src="shared/img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div class="container">
+      <h1>Editar perfil</h1>
+  	<div class="row">
+        <!-- left column -->
+        <div class="col-md-3">
+          <div class="text-center">
+            <img  ng-src="{{usuario.fotoPerfil}}" on-error="shared/img/silueta_alumno.png" width="100px" height="100px" class="avatar img-circle"  >
+              <img  ng-if="usuario.fotoPerfil == null" ng-src="shared/img/silueta_alumno.png" width="100px" height="100px" class="avatar img-circle" >
+          </div>
+        </div>
+
+        <!-- edit form column -->
+        <div class="col-md-9 personal-info">
+          <div ng-if="usuarioModificado" class="alert alert-info alert-dismissable">
+            <a class="panel-close close" data-dismiss="alert">×</a>
+            {{usuarioModificado}}
+          </div>
+          <h3>Datos del usuario</h3>
+
+          <form id="postForm" name="modificarUsuario" ng-submit="realizarModificacion()">
+            <md-input-container class="md-block">
+              <label>Url de la foto de su perfil</label>
+              <input md-maxlength="250" name="fotoPerfil" type="text" ng-model="usuario.fotoPerfil">
+              <div ng-messages="modificarUsuario.fotoPerfil.$error">
+                <div ng-message="md-maxlength">La url es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Usuario</label>
+              <input md-maxlength="100" required name="usuario" type="text" ng-model="usuario.usuario" ng-disabled="usuario.tipoUsuario == 'DOCENTE'">
+              <div ng-messages="modificarUsuario.usuario.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">El nombre usuario es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Nombre</label>
+              <input md-maxlength="100" required name="nombre" type="text" ng-model="usuario.nombre" ng-disabled="usuario.tipoUsuario == 'DOCENTE'">
+              <div ng-messages="modificarUsuario.nombre.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+              <label>Apellido</label>
+              <input md-maxlength="100" required name="apellido" type="text" ng-model="usuario.apellido" ng-disabled="usuario.tipoUsuario == 'DOCENTE'">
+              <div ng-messages="modificarUsuario.apellido.$error">
+                <div ng-message="required">El campo es requerido</div>
+                <div ng-message="md-maxlength">El apellido es demasiado largo</div>
+              </div>
+            </md-input-container>
+            <div class="form-group">
+              <label class="col-md-3 control-label"></label>
+              <div class="col-md-8">
+                <!-- <input type="button" class="btn btn-primary" value="Save Changes"> -->
+                    <md-button type="submit" style="background-color: #933132" ng-click="realizarModificacion()" class="md-primary md-raised">Modificar usuario</md-button>
+              </div>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+
+</md-dialog>
+
+<!--
+<div class="section">
+ <div class="container">
+ <div class="row">
+  <md-dialog aria-label="Mango (Fruit)">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Modificar usuario</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="shared/img/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+  <blockquote class="pre-scrollable">
+    <img ng-if="usuario.fotoPerfil != null" ng-src="{{usuario.fotoPerfil}}" on-error="shared/img/silueta_alumno.png" class="img-thumbnail" width="100px" />
+    <span class="card-title"> {{usuario.nombre}}, {{usuario.apellido}}</span>
+    <md-content  class="md-whiteframe-z1 formulario" layout-padding>
+      <div ng-if="usuarioModificado" class="alert alert-success" >
+          {{usuarioModificado}}
+      </div>
+        <form id="postForm" name="modificarUsuario" ng-submit="realizarModificacion()" >
+          <md-input-container class="md-block">
+            <label>Mail</label>
+            <input md-maxlength="100" required name="mail" type="email" ng-model="usuario.mail">
+            <div ng-messages="modificarUsuario.mail.$error">
+              <div ng-message="required">El campo es requerido</div>
+              <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+            </div>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Foto Perfil</label>
+            <input md-maxlength="250" required name="fotoPerfil" type="text" ng-model="usuario.fotoPerfil">
+            <div ng-messages="modificarUsuario.fotoPerfil.$error">
+              <div ng-message="required">El campo es requerido</div>
+              <div ng-message="md-maxlength">El nombre es demasiado largo</div>
+            </div>
+          </md-input-container>
+
+
+          <md-button type="submit" style="background-color: #933132" ng-click="realizarModificacion()" class="md-primary md-raised">Modificar usuario</md-button>
+
+        </form>
+  </md-content>
+   </blockquote>
+
+  </form>
+</md-dialog>
+
+     </div>
+    </div>
+  </div> -->

@@ -44,10 +44,6 @@ angular.module('myapp.login')
       };*/
   }
 
-  $scope.prueba = function(){
-    console.log('pero claro que si campeon');
-  }
-
   $scope.login = function(){
     $scope.cargando=true;
     if($scope.conGuarani == false){
@@ -63,6 +59,7 @@ angular.module('myapp.login')
         $state.go('publicador');
       })
       .catch(function(mensaje){
+        $scope.cargando=false;
           $rootScope.manejoMensajeError(mensaje);
       });
     }else{
@@ -114,6 +111,7 @@ angular.module('myapp.login')
               existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'publicador');
           })
           .catch(function(mensaje){
+                $scope.cargando=false;
                 $rootScope.manejoMensajeError(mensaje);
           })
       }else{
@@ -122,6 +120,7 @@ angular.module('myapp.login')
               existeUsuario(usuarioGuarani,$scope.usuario.tipoUsuarioSeleccionado,'alumnos');
           })
           .catch(function(mensaje){
+                $scope.cargando=false;
                 $rootScope.manejoMensajeError(mensaje);
           })
       }

@@ -95,4 +95,56 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
         });
       };
 
+      function ModificarUsuarioController($scope, $mdDialog, usuario, UsuarioPublicadorService) {
+
+        $scope.usuario = usuario;
+        console.log($scope.usuario);
+
+        $scope.cancel = function() {
+         $mdDialog.cancel();
+       }
+
+       $scope.realizarModificacion = function(){
+         console.log($scope.usuario);
+         $scope.usuario.permisosCarteleras = null;
+         $scope.usuario.permisosCartelerasVO = null;
+         $scope.usuario.tipoUsuario = null;
+         UsuarioPublicadorService.modificarPerfilUsuario($scope.usuario)
+          .then(function(data){
+              $scope.usuarioModificado = "El usuario fue modificado con exito"
+          }).
+          catch(function(error){
+              console.log(error);
+          });
+
+       }
+     }
+
+
+      $scope.modificarDatos = function(ev) {
+        //console.log('modificar datos');
+             $mdDialog.show({
+             controller: ModificarUsuarioController,
+             templateUrl: 'js/publicador/publicacion/views/modificarUsuario.tmpl.html',
+              locals: {
+                 usuario: $scope.usuario
+               },
+             parent: angular.element(document.body),
+             targetEvent: ev,
+             clickOutsideToClose:true,
+             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+           })
+           .then(function(answer) {
+            console.log('You said the information was "' + answer + '".');
+            UsuarioPublicadorService.getUsuario($scope.usuario.id)
+             .then(function(data){
+                  // Solo actualizo la foto de perfil...
+                 $scope.usuario.fotoPerfil = data.fotoPerfil;
+             }).
+             catch(function(error){
+                 console.log(error);
+             });
+           });
+      };
+
 });
