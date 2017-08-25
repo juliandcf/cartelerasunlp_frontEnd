@@ -25,6 +25,7 @@ angular.module('myapp.admin.cartelera')
 
   PermisosCartelerasService.getPermisos()
   .then(function(data){
+      data.shift();
       $scope.permisos = data;
       cargarPermisosYaSeleccionados();
   }).

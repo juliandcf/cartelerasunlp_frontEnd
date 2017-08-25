@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-if="cartelera.alumnosDTO" class="container">
   <h2>Alumnos interesados en {{cartelera.nombre}}</h2>
   <p>Si no tienen mail es porque no lo informaron:</p>
   <table class="table table-striped">
@@ -22,4 +22,7 @@
 
     </tbody>
   </table>
+</div>
+<div ng-if="!cartelera.alumnosDTO" class="container text-center">
+  <h3>No hay alumnos interesados en {{cartelera.nombre}}</h3>
 </div>

@@ -98,6 +98,7 @@ angular.module('myapp.login')
 
     })
     .catch(function(mensaje){
+        $scope.cargando=false;
       $scope.loginErrorMessage = 'El usuario y contraseña no coinciden';
     });
   }
