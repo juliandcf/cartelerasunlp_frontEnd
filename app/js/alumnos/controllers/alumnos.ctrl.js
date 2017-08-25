@@ -3,8 +3,6 @@ angular.module('myapp.alumnos')
 
   $scope.currentPage = 1;
   $scope.usuario = ParseTokenService.objetoDelToken();
-
-	console.log($scope.usuario);
 	$scope.logout = function() {
 		LoginService.logout()
 		.then(function(){

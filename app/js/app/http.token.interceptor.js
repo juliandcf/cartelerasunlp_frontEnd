@@ -15,8 +15,6 @@ angular.module('myapp')
          if (config.url.indexOf('.html') === -1) {
             // Si es usuario esta logeado y no va a logout (no es necesario el token)
             if (loginService.isLoggedIn() && config.url.indexOf('logout') === -1) {
-              console.log('seteo configuracion');
-              console.log(loginService.getToken());
               config.headers['Authorization'] = loginService.getToken();
             }
           }
