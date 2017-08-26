@@ -36,7 +36,6 @@ angular.module('myapp.alumnos')
     //$scope.getUsuarioInteresId();
 
     function cargarInteresesSeleccionados(){
-      console.log($scope.carteleras);
         angular.forEach($scope.carteleras, function(value, key) {
             if ($scope.CartelerasInteresan.includes(value.id)){
                value.interesa = true;
@@ -149,14 +148,13 @@ angular.module('myapp.alumnos')
                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
              })
              .then(function(answer) {
-              console.log('You said the information was "' + answer + '".');
-              UsuarioAlumnoService.getUsuario($scope.usuario.id)
-               .then(function(data){
-                   $scope.usuario = data;
-               }).
-               catch(function(error){
-                   console.log(error);
-               });
+                UsuarioAlumnoService.getUsuario($scope.usuario.id)
+                 .then(function(data){
+                     $scope.usuario = data;
+                 }).
+                 catch(function(error){
+                     console.log(error);
+                 });
              });
 
 
@@ -167,7 +165,6 @@ angular.module('myapp.alumnos')
 })
 .controller('PaginadoCtrl', function($scope){
   $scope.pageChangeHandler = function(num) {
-    console.log('going to page ' + num);
   };
 })
 

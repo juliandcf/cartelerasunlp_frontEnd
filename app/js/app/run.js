@@ -15,10 +15,6 @@ angular.module('myapp')
 					  var usuarioToken = ParseTokenService.parseToken(LoginService.getToken());
 						var urlEstado = $state.href(toState, {}, {absolute: true});
 						var userRol = RolService.getRol(usuarioToken);
-						console.log(userRol);
-						console.log(urlEstado);
-						//console.log(urlEstado.search(routeForAdmin));
-						debugger
         	 if(userRol == "ADMINISTRADOR" && urlEstado.search(routeForAdmin) == -1){
         	 		event.preventDefault();
              	$state.go('admin');

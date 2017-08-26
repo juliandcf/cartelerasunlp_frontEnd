@@ -10,11 +10,7 @@ angular.module('myapp')
       if($usuario.legajo){
         tipoUsuario = "ALUMNO";
       }else{
-        //var tipoUsuario = ParseTokenService.parseToken(token);
-        //console.log($usuario);
         $usuario.permisosCartelerasVO.some(function(p){
-        //  console.log(p.nombre);
-
           if( p.nombre == 'ADMINISTRADOR'){
             tipoUsuario= "ADMINISTRADOR";
           }
@@ -25,7 +21,6 @@ angular.module('myapp')
             tipoUsuario =  "INSTITUCIONAL";
           }
           });
-          console.log($usuario);
           //Si salio del forec y el tipoUsuario es null es porque no encontro ninguno de esos roles. Por lo tanto el tipoUsuario DOCENTE
             if (tipoUsuario == null) {
               tipoUsuario = "DOCENTE";

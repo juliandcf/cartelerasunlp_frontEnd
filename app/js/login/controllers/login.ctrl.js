@@ -33,17 +33,6 @@ angular.module('myapp.login')
     "alumnos":"#8cb1b8"
   };
 
-  $scope.colorLogin = {
-      background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
-  };
-
-  $scope.changeColor = function(){
-     console.log($scope.usuario.tipoUsuarioSeleccionado.restCarteleras);
-     /* $scope.colorLogin = {
-        background : $scope.$eval($scope.usuario.tipoUsuarioSeleccionado, colors)
-      };*/
-  }
-
   $scope.login = function(){
     $scope.cargando=true;
     if($scope.conGuarani == false){
@@ -54,7 +43,7 @@ angular.module('myapp.login')
        //Esto es para mostrarlo, sacarlo dsp
         var token = localStorage.getItem('tokenSeguridad');
         var tokenParseado = ParseTokenService.parseToken(token);
-        console.log(tokenParseado);
+        // console.log(tokenParseado);
         $scope.cargando=false;
         $state.go('publicador');
       })
@@ -89,10 +78,8 @@ angular.module('myapp.login')
           var tokenParseado = ParseTokenService.parseToken(token);
           $scope.cargando=false;
           $state.go(nombreTipoUsuario);
-          console.log(tokenParseado);
         })
         .catch(function(mensaje){
-          console.log("ir a otro estado o levantar modal para completar datos");
           registrarUsuarioEnCarteleras($scope.usuario.tipoUsuarioSeleccionado, $scope.usuarioGuarani);
         });
 
@@ -104,8 +91,6 @@ angular.module('myapp.login')
   }
 
   function registrarUsuarioEnCarteleras(tipoUsuarioSeleccionado, usuarioGuarani){
-      console.log(tipoUsuarioSeleccionado);
-
       if(tipoUsuarioSeleccionado.restCarteleras == "publicador"){
           RegistroService.registrarDocente(usuarioGuarani)
           .then(function(data){
@@ -134,7 +119,6 @@ angular.module('myapp.login')
     .then(function(data){
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
         var tokenParseado = ParseTokenService.parseToken(token);
-        console.log("deberia pasarlo al estado "+nombreEstado+", el token: "+tokenParseado);
         $scope.cargando=false;
         $state.go(nombreEstado);
     }).catch(function(mensaje){

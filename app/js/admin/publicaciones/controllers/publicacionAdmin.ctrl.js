@@ -6,7 +6,6 @@ angular.module('myapp.admin.publicacion')
 		   CarteleraService.getCartelerasConPublicaciones()
 		    .then(function(data){
 		        $scope.carteleras = data;
-		        console.log(data);
 		    }).
 		    catch(function(error){
 		        console.log(error);
@@ -44,20 +43,3 @@ angular.module('myapp.admin.publicacion')
    }
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

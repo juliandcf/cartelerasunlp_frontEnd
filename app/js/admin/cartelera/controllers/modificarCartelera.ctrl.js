@@ -9,7 +9,6 @@ angular.module('myapp.admin.cartelera')
       angular.forEach($scope.permisos, function(value, key) {
         //NO FUNCIONA ESTO AUN
           if ($scope.cartelera.permisosCarteleras.includes(value.id)){
-            console.log(value);
              value.seleccionada = true;
           }
         });

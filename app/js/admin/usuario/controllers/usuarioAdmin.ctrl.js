@@ -1,25 +1,17 @@
 angular.module('myapp.admin.usuario')
 .controller('ABMUsuarioAdminCtrl', function($scope, $state, $stateParams, RolService, ParseTokenService, UsuarioPublicadorService, CarteleraService, PermisosCartelerasService, $mdDialog){
-	$scope.usuario = ParseTokenService.objetoDelToken(); 
-	
+	$scope.usuario = ParseTokenService.objetoDelToken();
+
 	 $scope.mensaje = $stateParams.exito;
-	 console.log($scope.mensaje);
 ////Se trae todas las carteleras para mostrarlas en el listado y las pone en $scope.carteleras
   $scope.cargarUsuarios = function(){
    UsuarioPublicadorService.getUsuarios($scope.usuario.id)
     .then(function(data){
         $scope.usuarios = data;
-        
         angular.forEach($scope.usuarios, function(value, key) {
             //NO FUNCIONA ESTO AUN
-        	 
-        	 value.tipoUsuario = RolService.getRol(value);
-        	 
+        value.tipoUsuario = RolService.getRol(value);
         });
-        
-        
-        
-        
     }).
     catch(function(error){
         console.log(error);
