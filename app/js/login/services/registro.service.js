@@ -11,8 +11,7 @@ angular.module('myapp.login')
 
   var registrarDocente = function(usuarioGuarani) {
     var defer = $q.defer();
-    console.log(usuarioGuarani);
-    $http.post(ENV.endpoint.url + '/usuario/publicador',
+    $http.post(ENV.endpoint.url + '/usuario/publicador/docente',
      {
       "usuario":usuarioGuarani.usuario,
       "nombre": usuarioGuarani.nombre,

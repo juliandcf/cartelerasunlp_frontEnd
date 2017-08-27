@@ -75,6 +75,7 @@ angular.module('myapp.login')
      })
     .success(function(data, status){
       if(data.codigo == 200){
+        console.log(data);
           localStorage.setItem('tokenSeguridad', data.objeto);
           defer.resolve(data);
       }else{

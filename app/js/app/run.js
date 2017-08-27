@@ -4,7 +4,7 @@ angular.module('myapp')
 	var routeForAdmin = '#/admin';
 	var routeForPublicador = '#/publicador';
 	var routeForAlumno = '#/alumnos';
-
+//http://localhost/#/publicador/publicaciones
 
    $rootScope.$on('$stateChangeStart', function (event, toState) {
         if (!LoginService.isLoggedIn() && toState.url != "/login") {
@@ -16,12 +16,13 @@ angular.module('myapp')
 						var urlEstado = $state.href(toState, {}, {absolute: true});
 						var userRol = RolService.getRol(usuarioToken);
         	 if(userRol == "ADMINISTRADOR" && urlEstado.search(routeForAdmin) == -1){
-        	 		event.preventDefault();
+							event.preventDefault();
              	$state.go('admin');
-        	 }else if ((userRol == "PUBLICADOR EXTERNO" || userRol=="INSTITUCIONAL" || userRol=="DOCENTE")
-					 					&& (urlEstado.search(routeForPublicador == -1))){
+        	 }else if ((userRol == "PUBLICADOR EXTERNO" || userRol=="INSTITUCIONAL" || userRol=="DOCENTE") && urlEstado.search(routeForPublicador) == -1){
+						console.log(urlEstado);
+						console.log(routeForPublicador);
         	 	event.preventDefault();
-             	$state.go('publicador');
+            $state.go('publicador');
         	 }else if (userRol == "ALUMNO" && urlEstado.search(routeForAlumno) == -1){
         	  	event.preventDefault();
              	$state.go('alumnos');

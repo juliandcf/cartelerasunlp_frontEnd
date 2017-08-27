@@ -46,7 +46,7 @@ angular.module('myapp.admin.usuario')
            .title('Ya existe un usuario llamado '.concat($scope.usuarioNuevo.usuario))
            .textContent('Por favor cambia el nombre del usuario y vuelve a intentarlo')
            .ariaLabel('Alert Dialog Demo')
-           .ok('Reintentar')
+           .ok('Cancelar')
            .targetEvent(ev)
        );
      };

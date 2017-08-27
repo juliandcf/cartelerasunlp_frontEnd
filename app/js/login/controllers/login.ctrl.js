@@ -118,6 +118,7 @@ angular.module('myapp.login')
     LoginService.existeUsuario(usuario.usuario, nombreEstado)
     .then(function(data){
         var token = localStorage.getItem('tokenSeguridad'); // o data.objeto
+        console.log(token);
         var tokenParseado = ParseTokenService.parseToken(token);
         $scope.cargando=false;
         $state.go(nombreEstado);

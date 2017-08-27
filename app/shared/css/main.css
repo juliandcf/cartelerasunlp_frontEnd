@@ -40,6 +40,10 @@
 	border-width:8px;
 }
 
+.panel>.panel-body{
+  overflow-y: scroll;
+  max-height: 300px;
+}
 /**
 Estilos para la pantalla de login
 */

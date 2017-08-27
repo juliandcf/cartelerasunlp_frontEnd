@@ -35,7 +35,15 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
 		        console.log(error);
 		    });
 		  };
-		  $scope.cargarCarteleras();
+
+      CarteleraService.getCartelerasConPermiso($scope.usuario.id)
+       .then(function(data){
+           $scope.carteleras = data;
+           console.log(data);
+       }).
+       catch(function(error){
+           console.log(error);
+       });
 
       alertBorrarConfirm = function(ev) {
         // Appending dialog to document.body to cover sidenav in docs app
@@ -146,5 +154,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
              });
            });
       };
+
 
 });

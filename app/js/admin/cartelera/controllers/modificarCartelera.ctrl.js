@@ -55,7 +55,7 @@ angular.module('myapp.admin.cartelera')
          .title('Ya existe una cartelera llamada '.concat($scope.cartelera.nombre))
          .textContent('Por favor cambia el nombre de la cartelera y vuelve a intentarlo')
          .ariaLabel('Alert Dialog Demo')
-         .ok('Reintentar')
+         .ok('Cancelar')
          .targetEvent(ev)
      );
    };

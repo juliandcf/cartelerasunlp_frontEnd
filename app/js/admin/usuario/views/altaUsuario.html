@@ -16,11 +16,12 @@
 
               <md-input-container class="md-block">
                  <label>Usuario</label>
-                <input md-maxlength="200" required md-no-asterisk name="usuario" ng-model="usuarioNuevo.usuario">
-
+                <input  pattern="(?!^\d+$)^[a-zA-Z0-9_-]+$"  md-maxlength="200" required md-no-asterisk name="usuario" ng-model="usuarioNuevo.usuario"  >
+<!-- pattern="[A-Za-z\-_]+$" -->
               <div ng-messages="altaUsuario.usuario.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El nombre de usuario es demasiado largo</div>
+                <div ng-message="pattern">El nombre de usuario no es valido</div>
               </div>
               </md-input-container>
 
