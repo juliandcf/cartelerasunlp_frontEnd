@@ -22,7 +22,7 @@ angular.module('myapp.publicador')
   $scope.showConfirmModificar = function(ev) {
         var confirm = $mdDialog.confirm()
               .title('Desea modificar la publicacion?')
-              .ok('Agregar')
+              .ok('Modificar')
               .cancel('Cancelar');
 
         $mdDialog.show(confirm).then(function() {
