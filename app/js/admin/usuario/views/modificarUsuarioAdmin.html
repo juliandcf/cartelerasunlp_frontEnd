@@ -16,7 +16,7 @@
 
               <md-input-container class="md-block">
                  <label>Usuario</label>
-                <input pattern="(?!^\d+$)^[a-zA-Z0-9_-]+$" md-maxlength="200" required md-no-asterisk name="usuario" ng-model="usuarioNuevo.usuario">
+                <input pattern="(?!^\d+$)^[a-zA-Z0-9_-]+$" md-maxlength="200" maxlength="200" required md-no-asterisk name="usuario" ng-model="usuarioNuevo.usuario">
 
               <div ng-messages="altaUsuario.usuario.$error">
                 <div ng-message="required">El campo es requerido</div>
@@ -27,7 +27,7 @@
 
               <md-input-container class="md-block">
               <label>Contraseña</label>
-                <input md-maxlength="200" required md-no-asterisk name="contrasena" type="password" ng-model="usuarioNuevo.contrasena">
+                <input md-maxlength="200" maxlength="200" required md-no-asterisk name="contrasena" type="password" ng-model="usuarioNuevo.contrasena">
 
                 <div ng-messages="altaUsuario.contrasena.$error">
                 <div ng-message="required">El campo es requerido</div>
@@ -37,7 +37,7 @@
 
                 <md-input-container class="md-block">
                 <label>Nombre</label>
-              <input md-maxlength="200" required md-no-asterisk name="nombre" ng-model="usuarioNuevo.nombre">
+              <input md-maxlength="200" maxlength="200" required md-no-asterisk name="nombre" ng-model="usuarioNuevo.nombre">
               <div ng-messages="altaUsuario.nombre.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El nombre es demasiado largo</div>
@@ -46,7 +46,7 @@
 
                <md-input-container class="md-block">
                 <label>Apellido</label>
-              <input md-maxlength="200" required md-no-asterisk name="apellido" ng-model="usuarioNuevo.apellido">
+              <input md-maxlength="200" maxlength="200" required md-no-asterisk name="apellido" ng-model="usuarioNuevo.apellido">
               <div ng-messages="altaUsuario.apellido.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El apellido es demasiado largo</div>

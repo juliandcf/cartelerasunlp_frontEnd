@@ -16,7 +16,7 @@
             <form id="postForm" name="altaPublicacion" ng-submit="showConfirm()" >
               <md-input-container class="md-block">
                 <label>Titulo de la publicaion</label>
-                <input md-maxlength="300" required name="titulo" ng-model="publicacion.titulo">
+                <input md-maxlength="300" maxlength="300" required name="titulo" ng-model="publicacion.titulo">
                 <div ng-messages="altaPublicacion.titulo.$error">
                   <div ng-message="required">El campo es requerido</div>
                   <div ng-message="md-maxlength">El nombre es demasiado largo</div>

@@ -16,7 +16,7 @@
           <form name="loginForm" ng-submit="login()" >
             <md-input-container class="md-block">
               <label>Usuario</label>
-              <input md-maxlength="200" required md-no-asterisk name="nombre" multiple ng-model="usuario.username">
+              <input md-maxlength="200" maxlength="200" required md-no-asterisk name="nombre" multiple ng-model="usuario.username">
               <div ng-messages="loginForm.nombre.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El usuario es demasiado largo</div>
@@ -24,7 +24,7 @@
             </md-input-container>
             <md-input-container class="md-block">
               <label>Password</label>
-              <input md-maxlength="300" required md-no-asterisk name="password" type="password" ng-model="usuario.password">
+              <input md-maxlength="300" maxlength="300" required md-no-asterisk name="password" type="password" ng-model="usuario.password">
               <div ng-messages="loginForm.password.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">La contraseña es demasiado larga</div>
