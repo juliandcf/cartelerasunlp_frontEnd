@@ -105,8 +105,14 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
 
       function ModificarUsuarioController($scope, $mdDialog, usuario, UsuarioPublicadorService) {
 
-        $scope.usuario = usuario;
-        console.log($scope.usuario);
+        UsuarioPublicadorService.getUsuario(usuario.id)
+         .then(function(data){
+             $scope.usuario = data;
+         }).
+         catch(function(error){
+             console.log(error);
+         });
+      
 
         $scope.cancel = function() {
          $mdDialog.cancel();

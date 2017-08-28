@@ -74,7 +74,18 @@ angular.module('myapp')
 		    return defer.promise;
 		  }
 
-
+			var getUsuario = function(id) {
+			var defer = $q.defer();
+			$http.get(ENV.endpoint.url +'/usuario/publicador/'+id)
+			.success(function(data) {
+				if (data.codigo == 200) {
+					defer.resolve(data.objeto);
+				} else {
+					defer.reject(data.mensaje);
+				}
+			}).error(defer.reject);
+			return defer.promise;
+		  }
 
 
   return {
@@ -83,6 +94,7 @@ angular.module('myapp')
     modificarPerfilUsuario:modificarPerfilUsuario,
 	  eliminarUsuario: eliminarUsuario,
     getUsuarios: getUsuarios,
+		getUsuario : getUsuario
 
   };
 })

@@ -105,7 +105,14 @@ angular.module('myapp.alumnos')
 
         function ModificarUsuarioController($scope, $mdDialog, usuario, UsuarioAlumnoService) {
 
-          $scope.usuario = usuario;
+          UsuarioAlumnoService.getUsuario(usuario.id)
+           .then(function(data){
+               $scope.usuario = data;
+           }).
+           catch(function(error){
+               console.log(error);
+           });
+          
 
           $scope.cancel = function() {
            $mdDialog.cancel();
