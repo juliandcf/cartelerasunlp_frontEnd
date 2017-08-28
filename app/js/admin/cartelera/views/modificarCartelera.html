@@ -15,7 +15,7 @@
           <form name="modificarCartelera" ng-submit="showConfirModificar()">
             <md-input-container class="md-block">
               <label>Nombre</label>
-              <input md-maxlength="200" maxlength="200" maxlength="200" required md-no-asterisk name="nombre" ng-model="cartelera.nombre">
+              <input  md-maxlength="100" maxlength="100" required md-no-asterisk name="nombre" ng-model="cartelera.nombre">
               <div ng-messages="modificarCartelera.nombre.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">El nombre es demasiado largo</div>
@@ -23,7 +23,7 @@
             </md-input-container>
             <md-input-container class="md-block">
               <label>Descripcion</label>
-              <input md-maxlength="300" maxlength="300" maxlength="300" required md-no-asterisk name="descripcion" ng-model="cartelera.descripcion">
+              <input  md-maxlength="100" maxlength="100" required md-no-asterisk name="descripcion" ng-model="cartelera.descripcion">
               <div ng-messages="modificarCartelera.descripcion.$error">
                 <div ng-message="required">El campo es requerido</div>
                 <div ng-message="md-maxlength">La descripcion es demasiado larga</div>
