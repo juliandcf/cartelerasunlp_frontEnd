@@ -37,6 +37,7 @@
             </md-input-container>
             <md-input-container class="md-block">
               <label>Usuario</label>
+
               <input md-maxlength="100" required name="usuario" type="text" ng-model="usuario.usuario" ng-disabled="usuario.tipoUsuario == 'DOCENTE'">
               <div ng-messages="modificarUsuario.usuario.$error">
                 <div ng-message="required">El campo es requerido</div>

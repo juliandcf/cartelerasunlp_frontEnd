@@ -108,11 +108,12 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
         UsuarioPublicadorService.getUsuario(usuario.id)
          .then(function(data){
              $scope.usuario = data;
+             $scope.usuario.tipoUsuario = usuario.tipoUsuario;
          }).
          catch(function(error){
              console.log(error);
          });
-      
+
 
         $scope.cancel = function() {
          $mdDialog.cancel();
