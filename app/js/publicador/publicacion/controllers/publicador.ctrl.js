@@ -6,7 +6,6 @@ angular.module('myapp.publicador')
   $scope.usuario = ParseTokenService.objetoDelToken();
   $scope.usuario.tipoUsuario = RolService.getRol($scope.usuario);
   $scope.menuItems = MenuService.getMenuItems($scope.usuario.tipoUsuario);
-  //console.log($scope.tipoUsuario);
 if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
   $state.go('admin');
 
@@ -29,7 +28,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
 		   CarteleraService.getCartelerasConPermiso($scope.usuario.id)
 		    .then(function(data){
 		        $scope.carteleras = data;
-		        console.log(data);
 		    }).
 		    catch(function(error){
 		        console.log(error);
@@ -39,7 +37,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
       CarteleraService.getCartelerasConPermiso($scope.usuario.id)
        .then(function(data){
            $scope.carteleras = data;
-           console.log(data);
        }).
        catch(function(error){
            console.log(error);
@@ -63,7 +60,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
             });
             ;
         }, function() {
-          console.log('Cancela');
           // $scope.status = 'You decided to keep your debt.';
         });
       };
@@ -78,13 +74,9 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
       function DialogController($scope, $mdDialog, cartelera) {
 
         $scope.cartelera = cartelera;
-
-        console.log('entro al dialog controller');
-
       };
 
       $scope.showAdvanced = function(ev, cartelera) {
-        console.log('entro al show advanced');
           $mdDialog.show({
           controller: DialogController,
           templateUrl: 'js/publicador/publicacion/views/alumnosInteresados.tmpl.html',
@@ -120,7 +112,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
        }
 
        $scope.realizarModificacion = function(){
-         console.log($scope.usuario);
          $scope.usuario.permisosCarteleras = null;
          $scope.usuario.permisosCartelerasVO = null;
          $scope.usuario.tipoUsuario = null;
@@ -137,7 +128,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
 
 
       $scope.modificarDatos = function(ev) {
-        //console.log('modificar datos');
              $mdDialog.show({
              controller: ModificarUsuarioController,
              templateUrl: 'js/publicador/publicacion/views/modificarUsuario.tmpl.html',
@@ -150,7 +140,6 @@ if($scope.usuario.tipoUsuario == 'ADMINISTRADOR'){
              fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
            })
            .then(function(answer) {
-            console.log('You said the information was "' + answer + '".');
             UsuarioPublicadorService.getUsuario($scope.usuario.id)
              .then(function(data){
                   // Solo actualizo la foto de perfil...

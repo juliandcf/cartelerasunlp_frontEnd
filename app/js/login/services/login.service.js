@@ -17,8 +17,6 @@ angular.module('myapp.login')
       "contrasena": password
      })
     .success(function(data){
-      console.log('El login responde: ');
-      console.log(data);
       if(data.codigo == 200){
           localStorage.setItem('tokenSeguridad', data.objeto);
           defer.resolve(data);
@@ -75,7 +73,6 @@ angular.module('myapp.login')
      })
     .success(function(data, status){
       if(data.codigo == 200){
-        console.log(data);
           localStorage.setItem('tokenSeguridad', data.objeto);
           defer.resolve(data);
       }else{
